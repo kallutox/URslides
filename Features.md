@@ -1,4 +1,4 @@
-# URide
+# URslide
 
 ## Features
 
