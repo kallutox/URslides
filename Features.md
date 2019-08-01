@@ -15,7 +15,7 @@
 | **Foliensatz löschen** | Hochgeladene Foliensätze können von dem entsprechenden Nutzer wieder gelöscht werden. Dies soll sowohl in der Übersichts-Ansicht, als auch bei der Folienbearbeitung möglich sein. | mittel (unkritisch) | 0.5 Tage | UI, Datenbank, Javascript |
 | **Foliensatz anschauen** | Besucher der Seite, welche nicht über einen Account verfügen, sind in der Lage die Ordner mit allen hochgeladenen Foliensätzen mittels eines PDF-Readers und die zugehörigen Kommentare anzuschauen. Dazu wird eine Leiste zur Übersicht über den gesamten Foliensatz angezeigt, der auch die Positionen und Arten der verfassten Kommentare veranschaulicht. | hoch (unkritisch) | 1 Tag | UI, Datenbank, Javascript |
 | **Foliensatz veröffentlichen** | Foliensätze eines Nuzters können auch im Vorfeld hochgeladen und kommentiert werden, die Veröffentlichung eines Foliensatzes ist optional und geschieht in einem eigenen Schritt und kann in der Übersichts-Ansicht erledigt werden. Unangemeldete Besucher sehen nur veröffentlichte Foliensätze. | mittel (unkritisch) | 1 Tag | UI, Datenbank, Javascript |
-| **Kommentare bearbeiten** | Nutzer haben die Möglichkeit ihre eigenen Kommentare auch im Nachhinein zu berarbeiten oder zu löschen. | mittel (unkritisch) | 1 Tag | UI, Datenbank, Javascript |
+| **Kommentare bearbeiten** | Nutzer haben die Möglichkeit ihre eigenen Kommentare auch im Nachhinein zu berarbeiten oder zu löschen. Dies kann in der Foliensatz-Ansicht erledigt werden. | mittel (unkritisch) | 1 Tag | UI, Datenbank, Javascript |
 
 
 
