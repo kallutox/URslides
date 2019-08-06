@@ -1,10 +1,14 @@
-# Projekt
+# URslides
 
-[Beschreiben Sie hier in einer kurzen Zusammenfassung Hintergrund, Ziele und Funktionen Ihrer Anwendung. Fügen Sie einen sinnvollen Screenshot ein. Geben Sie eine Link zu einer lauffähigen, online-erreichbaren Version der fertigen Anwendung an.]
+[Die Anwendung *URslides* ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text, Audio oder Video können veröffentlicht und so den Studierenden zugänglich gemacht werden. (--> Screenshot + Link)]
 
 ## Team
 
-[Beschreiben Sie hier die einzelnen Teammitglieder mit Namen, E-Mail-Adresse, Github-Nutzer und Foto. Nennen Sie mindestens eine Komponenten der Anwendung, die in wesentlichen Teilen vom jeweiligen Teammitglied entwickelt wurde.]
+| | Infos | Implementierte Komponenten
+|-|-|-|
+Foto | **Stefan Braun**<br />E-Mail: stefan.braun@student.ur.de<br />Github-Nutzer: INazca | Stefan Braun hat die Komponente (...) implementiert. |
+Foto| **Isabella Kreller**<br />E-Mail: isabella.kreller@student.ur.de<br />Github-Nutzer: kallutox | Isabella Kreller hat die Komponente (...) implementiert. |
+
 
 ## Setup
 
