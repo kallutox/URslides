@@ -1,6 +1,7 @@
 # URslides
 
-[Die Anwendung *URslides* ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text, Audio oder Video können veröffentlicht und so den Studierenden zugänglich gemacht werden. (--> Screenshot + Link)]
+Die Anwendung *URslides* ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text, Audio oder Video können veröffentlicht und so den Studierenden zugänglich gemacht werden. 
+(Screenshot + Link to be added)
 
 ## Team
 
