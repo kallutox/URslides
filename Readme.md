@@ -7,8 +7,8 @@ Die Anwendung *URslides* ermöglicht Dozierenden der Universität eine nachträg
 
 | | Infos | Implementierte Komponenten
 |-|-|-|
-<img alt="Portrait von Alexander Bazo" src="Desktop/stefan_mme_bild.jpg" width="100" /> | **Stefan Braun**<br />E-Mail: stefan.braun@student.ur.de<br />Github-Nutzer: INazca | Stefan Braun hat die Komponente (...) implementiert. |
-<img alt="Portrait von Alexander Bazo" src="Desktop/isy_mme_bild.jpg" width="100" /> | **Isabella Kreller**<br />E-Mail: isabella.kreller@student.ur.de<br />Github-Nutzer: kallutox | Isabella Kreller hat die Komponente (...) implementiert. |
+<img alt="Portrait von Stefan Braun" src="docs/img/stefan-braun.jpg" width="100" /> | **Stefan Braun**<br />E-Mail: stefan.braun@student.ur.de<br />Github-Nutzer: INazca | Stefan Braun hat die Komponente (...) implementiert. |
+<img alt="Portrait von Isabella Kreller" src="docs/img/isabella-kreller.jpg" width="100" /> | **Isabella Kreller**<br />E-Mail: isabella.kreller@student.ur.de<br />Github-Nutzer: kallutox | Isabella Kreller hat die Komponente (...) implementiert. |
 
 
 ## Setup
