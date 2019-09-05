@@ -80,6 +80,34 @@ footer div {
     float: left;
 }
 
+/*css for reader.html*/
+#navline {
+    width: 95%;
+    height: 5em;
+    margin: 1vw auto;
+    background: #ff2453;
+}
+
+#reader-wrapper {
+    width: 90%;
+    margin: 2vw auto;
+}
+
+#reader {
+    float: left;
+    width: 50%;
+    height: 40vw;
+    padding: 1vw;
+    background: #f1f1f1;
+}
+
+#comment-section-wrapper {
+    float: left;
+    width: 50%;
+    height: 40vw;
+    background: #111111;
+}
+
 h1 {
     width: 98vw;
     margin: 0;
