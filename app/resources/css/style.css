@@ -5,12 +5,9 @@ html {
 body {
     margin: 0;
     background: #FAFAFA;
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    color: #000;
-}
-
-body div {
-    padding: 1vw;
+    font-family: 'Manjari', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: #111111;
+    text-align: center;
 }
 
 h1 {
@@ -22,4 +19,174 @@ h1 {
     border-width: 0 0 0.25vh 0;
     border-color: #FFF;
     color: #FAFAFA;
+}
+
+.themecolor {
+    color: #ff2453;
+}
+
+header {
+    width: 95%;
+    margin: 1em auto 0 auto;
+    font-size: 1.5em;
+    overflow: hidden;
+}
+
+#slides-name {
+    float: left;
+    min-height: 1em;
+    width: 33.3%;
+    text-align: left;
+}
+
+#headline {
+    float: left;
+    width: 33.3%;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+#head-btn {
+    float: right;
+    align-content: right;
+    padding-top: 0.4rem;
+    padding-bottom: 0.2rem;
+}
+
+.homecontent {
+    width: 50%;
+    margin: 10vh auto;
+}
+
+.homecontent p {
+    font-size: 2em;
+}
+
+.upload-btn {
+    width: 7vw;
+    max-width: 120px;
+    height: 7vw;
+    max-height: 120px;
+    line-height: 1vw;
+    font-size: 5vw;
+    padding-top: 0.4rem;
+    padding-bottom: 0;
+    color: #ff2453;
+}
+
+.upload-img {
+    width: 100%;
+}
+
+hr {
+    width: 70%;
+    border-color: #f1f1f1;
+    border-width: 2px;
+}
+
+.search-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+footer {
+    width: 90%;
+    margin: 12rem auto 0 auto;
+    border-top: 2px solid #ff2453;
+    padding-top: 1em;
+    font-size: 0.7em;
+}
+
+footer div {
+    width: 50%;
+    float: left;
+}
+
+/*css for reader.html*/
+#navline {
+    width: 95%;
+    height: 4em;
+    margin: 1em auto;
+    background: #ff2453;
+}
+
+#reader-wrapper {
+    width: 90%;
+    margin: 1em auto;
+}
+
+#reader {
+    float: left;
+    width: 40%;
+    height: 60vh;
+    background: #f1f1f1;
+}
+
+#comment-section-wrapper {
+    float: left;
+    width: 60%;
+    height: 70vh;
+    background: #111111;
+}
+
+/*css for search.html*/
+#search-page-input {
+    width: 70%;
+    margin: 1em auto;
+}
+
+#results {
+    width: 95vw;
+    margin: 3vh auto;
+    overflow: hidden;
+}
+
+.result-wrapper {
+    width: 15%;
+    margin: 2.5vh 0.8% 2.5vh 0.8%;
+    float: left;
+    border: 2px solid #111111;
+    background: #f1f1f1;
+    border-radius: .25rem;
+}
+
+#results img {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.result-name {
+    margin-top: 1vh;
+    font-size: 1.2rem;
+    border-top: 1px solid #111111;
+    padding-top: 0.4rem;
+}
+
+/*bootstrap changes*/
+.btn-outline-danger {
+    border-color: #ff2453;
+}
+
+.btn-outline-danger:hover{
+    border-color: #ff2453;
+    background:  #ff2453;
+}
+
+.btn-outline-danger:active{
+    border-color: #ff2453;
+    background:  #ff2453;
+}
+
+.btn-danger {
+    border-color: #ff2453;
+    background:  #ff2453;
+}
+
+.btn-danger:hover{
+    border-color: #ff2453;
+    background:  #ff2453;
+}
+
+.btn-danger:active{
+    border-color: #ff2453;
+    background:  #ff2453;
 }
