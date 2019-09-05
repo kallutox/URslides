@@ -67,6 +67,19 @@ hr {
     border-bottom-left-radius: 0;
 }
 
+footer {
+    width: 90%;
+    margin: 12rem auto 0 auto;
+    border-top: 2px solid #ff2453;
+    padding-top: 1em;
+    font-size: 0.7em;
+}
+
+footer div {
+    width: 50%;
+    float: left;
+}
+
 h1 {
     width: 98vw;
     margin: 0;
