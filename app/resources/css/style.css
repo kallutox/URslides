@@ -24,10 +24,14 @@ header {
 
 .upload-btn {
     width: 7vw;
+    max-width: 120px;
     height: 7vw;
-    top: 100%;
+    max-height: 120px;
     line-height: 1vw;
     font-size: 5vw;
+    padding-top: 0.4rem;
+    padding-bottom: 0;
+    color: #ff2453;
 }
 
 .upload-img {
