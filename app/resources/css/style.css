@@ -120,7 +120,6 @@ footer div {
     float: left;
     width: 40%;
     height: 60vh;
-    background: #f1f1f1;
     position: absolute;
 }
 
@@ -150,8 +149,46 @@ footer div {
     float: right;
     width: 60%;
     height: 70vh;
-    background: #111111;
     position: relative;
+}
+#comments-wrapper {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.text-comment {
+    width: 90%;
+    margin: 0 auto 2vh auto;
+    text-align: left;
+    border: 2px solid #ff2453;
+    border-radius: .5rem;
+    border-top-left-radius: 0;
+    padding: 1.7vh;
+}
+
+#comment-height-correction {
+    width: 100%;
+    height: 15%;
+}
+
+#input-area {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom: 0;
+}
+
+#input-area textarea {
+    width: 90%;
+    height: 100%;
+    float: left;
+}
+
+#btn-send {
+    float: left;
+    width: 10%;
+    height: 100%;
 }
 
 /*css for search.html*/
@@ -190,6 +227,7 @@ footer div {
 /*bootstrap changes*/
 .btn-outline-danger {
     border-color: #ff2453;
+    background: #f1f1f1;
 }
 
 .btn-outline-danger:hover{
