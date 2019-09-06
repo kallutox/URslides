@@ -83,9 +83,14 @@ hr {
     border-width: 2px;
 }
 
-.search-btn {
+.border-edge-left {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+}
+
+.border-edge-right {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 footer {
@@ -227,7 +232,6 @@ footer div {
 /*bootstrap changes*/
 .btn-outline-danger {
     border-color: #ff2453;
-    background: #f1f1f1;
 }
 
 .btn-outline-danger:hover{
