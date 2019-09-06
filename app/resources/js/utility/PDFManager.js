@@ -1,52 +1,89 @@
 /* eslint-env browser */
+//a lot of this code is based on the pdf.js example by mozilla: https://mozilla.github.io/pdf.js/examples/
+var isRendering = false,
+    pageNumPending = null;
 
 class PDFManager {
 
     constructor() {
         this.maxVH = getMaxVH();
-        this.currentPage = 0;
+        this.currentPageOn = 0;
+        this.pageNum = 0;
         this.currentPDF = null;
-        this.isRendering = false;
     }
 
     loadPDFbyID(id) {
         //with this function later the Database can be accessed to get the desired item as a loadingTask-object, which represents the pdf
-        this.currentPDF = pdfjsLib.getDocument("./resources/example.pdf");
-    }
+        let newPDF = pdfjsLib.getDocument("./resources/example.pdf"),
+            self = this;
 
-    render(page) {
-        //this function gets a loadingTask and translates it into a renderedPDF
-        this.currentPage = page;
-        let vh = this.maxVH;
-        this.currentPDF.promise.then(function (pdf) {
-            let h = vh;
-            pdf.getPage(page).then(function (page) {
-                var desiredHeight = h * 0.7,
-                    viewport = page.getViewport({ scale: 1}),
-                    scale = desiredHeight / viewport.height,
-                    scaledViewport = page.getViewport({ scale: scale }),
-                    canvas = document.getElementById("reader-canvas"),
-                    context = canvas.getContext("2d"),
-                    renderContext = 0;
-                viewport = page.getViewport({ scale: scale});
-                canvas.height = scaledViewport.height;
-                canvas.width = scaledViewport.width;
-                renderContext = {
-                    canvasContext: context,
-                    viewport: viewport,
-                };
-                page.render(renderContext);
-            });
+        newPDF.promise.then(function (pdf) {
+            self.currentPDF = pdf;
+            self.pageNum = pdf.numPages;
+            self.currentPageOn = 1;
+            render(self.currentPDF, self.currentPageOn, self.maxVH);
         });
     }
 
-    get nextPage() {
-        return this.currentPage + 1;
+    addToRenderQueue(page) {
+        //adds a desired page to the renderqueue
+        this.currentPageOn = page;
+        if (isRendering) {
+            pageNumPending = page;
+        } else {
+            render(this.currentPDF, this.currentPage, this.maxVH);
+        }
     }
 
-    get previousPage() {
-        return this.currentPage - 1;
+    nextPage() {
+        //renders the next page, if possible
+        if (this.currentPageOn < this.pageNum) {
+            this.addToRenderQueue(this.currentPage + 1);
+        }
     }
+
+    previousPage() {
+        //renders the previous page, if possible
+        if (this.currentPageOn > 1) {
+            this.addToRenderQueue(this.currentPage - 1);
+        }
+    }
+
+    get currentPage() {
+        return this.currentPageOn;
+    }
+}
+
+function render(pdf, page, vh) {
+    //this function gets a loadingTask and translates it into a renderedPDF
+    let h = vh;
+    pdf.getPage(page).then(function (page) {
+        var desiredHeight = h * 0.7,
+            viewport = page.getViewport({ scale: 1 }),
+            scale = desiredHeight / viewport.height,
+            scaledViewport = page.getViewport({ scale: scale }),
+            canvas = document.getElementById("reader-canvas"),
+            context = canvas.getContext("2d"),
+            renderContext = 0,
+            renderTask = null;
+        viewport = page.getViewport({ scale: scale });
+        canvas.height = scaledViewport.height;
+        canvas.width = scaledViewport.width;
+        renderContext = {
+            canvasContext: context,
+            viewport: viewport,
+        };
+        
+        renderTask = page.render(renderContext);
+        renderTask.promise.then(function() {
+            isRendering = false;
+            if (pageNumPending !== null) {
+              // New page rendering is pending
+              render(pdf, pageNumPending, vh);
+              pageNumPending = null;
+            }
+          });
+    });
 }
 
 function getMaxVH() {
