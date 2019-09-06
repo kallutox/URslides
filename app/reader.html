@@ -20,21 +20,45 @@
     <header>
         <p id="slides-name">MySlides</p>
         <p id="headline"><span class="themecolor">UR</span>slides</p>
-        <button id="head-btn"  class="btn btn-danger">Save comments</button>
+        <button id="head-btn" class="btn btn-danger">Save comments</button>
     </header>
 
     <div id="navline"></div>
 
     <div id="reader-wrapper">
         <div id="reader">
+            <div id="reader-nav"><button id="btn-previous">prev</button>
+                <p id="page-num">1</p><button id="btn-next">next</button>
+            </div>
             <canvas id="reader-canvas" width="200" height="400"></canvas>
         </div>
         <div id="comment-section-wrapper">
+            <div id="comments-wrapper">
+                <p class="text-comment">Trump Ipsum is calling for a total and complete shutdown of Muslim text entering
+                    your
+                    website. I will write some great placeholder text – and nobody writes better placeholder text than
+                    me,
+                    believe me – and I’ll write it very inexpensively. I will write some great, great text on your
+                    website’s
+                    Southern border, and I will make Google pay for that text. Mark my words. We have so many things
+                    that we
+                    have to do better... and certainly ipsum is one of them. Lorem Ipsum best not make any more threats
+                    to
+                    your website. It will be met with fire and fury like the world has never seen. Look at these words.
+                    Are
+                    they small words? And he referred to my words - if they're small, something else must be small. I
+                    guarantee you there's no problem, I guarantee.</p>
+                <div id="comment-height-correction"></div>
+            </div>
+            <div id="input-area">
+                <textarea class="form-control" id="comment-input"></textarea>
+                <button id="btn-send" class="btn-outline-danger">send</button>
+            </div>
         </div>
     </div>
 
     <script src="../../node_modules/pdfjs-dist/build/pdf.js"></script>
-    <script type="module" src="resources/js/index.js"></script>
+    <script type="module" src="resources/js/indexReader.js"></script>
 </body>
 
 </html>

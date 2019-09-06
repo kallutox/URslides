@@ -112,20 +112,83 @@ footer div {
 #reader-wrapper {
     width: 90%;
     margin: 1em auto;
+    overflow: hidden;
+    position: relative;
 }
 
 #reader {
     float: left;
     width: 40%;
     height: 60vh;
-    background: #f1f1f1;
+    position: absolute;
+}
+
+#reader-nav {
+    float: center;
+    max-width: 400px;
+    width: 50%;
+    margin: 0 25%;
+    position: absolute;
+    overflow: hidden;
+}
+
+#btn-previous {
+    float: left;
+}
+
+#page-num {
+    float: left;
+    margin: 0 2vw;
+}
+
+#btn-next {
+    float: left;
 }
 
 #comment-section-wrapper {
-    float: left;
+    float: right;
     width: 60%;
     height: 70vh;
-    background: #111111;
+    position: relative;
+}
+#comments-wrapper {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.text-comment {
+    width: 90%;
+    margin: 0 auto 2vh auto;
+    text-align: left;
+    border: 2px solid #ff2453;
+    border-radius: .5rem;
+    border-top-left-radius: 0;
+    padding: 1.7vh;
+}
+
+#comment-height-correction {
+    width: 100%;
+    height: 15%;
+}
+
+#input-area {
+    width: 100%;
+    height: 15%;
+    position: absolute;
+    bottom: 0;
+}
+
+#input-area textarea {
+    width: 90%;
+    height: 100%;
+    float: left;
+}
+
+#btn-send {
+    float: left;
+    width: 10%;
+    height: 100%;
 }
 
 /*css for search.html*/
@@ -144,7 +207,7 @@ footer div {
     width: 15%;
     margin: 2.5vh 0.8% 2.5vh 0.8%;
     float: left;
-    border: 2px solid #111111;
+    border: 2px solid #999;
     background: #f1f1f1;
     border-radius: .25rem;
 }
@@ -157,13 +220,14 @@ footer div {
 .result-name {
     margin-top: 1vh;
     font-size: 1.2rem;
-    border-top: 1px solid #111111;
+    border-top: 1px solid #999;
     padding-top: 0.4rem;
 }
 
 /*bootstrap changes*/
 .btn-outline-danger {
     border-color: #ff2453;
+    background: #f1f1f1;
 }
 
 .btn-outline-danger:hover{
@@ -182,8 +246,8 @@ footer div {
 }
 
 .btn-danger:hover{
-    border-color: #ff2453;
-    background:  #ff2453;
+    border-color: #d42148;
+    background:  #d42148;
 }
 
 .btn-danger:active{
