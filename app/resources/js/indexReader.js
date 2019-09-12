@@ -1,9 +1,11 @@
 /* eslint-env browser */
 import PDFManager from "../js/utility/PDFManager.js";
 import ReaderView from "../js/ui/ReaderView.js";
+import DBManager from "../js/utility/DBManager.js";
 
 var pdfManager = new PDFManager(),
-    view = new ReaderView();
+    view = new ReaderView(),
+    dbm = new DBManager();
 
 function init() {
     console.log("app started!");
