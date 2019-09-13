@@ -14,7 +14,7 @@ class PDFManager {
 
     loadPDFbyID(id) {
         //with this function later the Database can be accessed to get the desired item as a loadingTask-object, which represents the pdf
-        let newPDF = pdfjsLib.getDocument("./resources/example.pdf"),
+        let newPDF = pdfjsLib.getDocument("/example.pdf"),
             self = this;
 
         newPDF.promise.then(function (pdf) {

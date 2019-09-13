@@ -1,0 +1,25 @@
+<% include partials/top %>
+
+<header>
+    <div id="slides-name"></div>
+    <p id="headline"><span class="themecolor">UR</span>slides</p>
+</header>
+
+<div id="addslides" class="homecontent">
+    <p>Add your own <span class="themecolor">slides</span>...</p>
+    <button class="btn btn-outline-danger upload-btn">+</button>
+</div>
+<hr>
+<div id="slidesearch" class="homecontent">
+    <p>or search for <span class="themecolor">slides</span>!</p>
+    <div class="input-group flex-nowrap">
+        <input type="text" name="itemsearch" id="itemsearch" class="form-control" placeholder="Search for slides...">
+        <button type="submit" class="btn btn-outline-danger border-edge-left">Search</button>
+    </div>
+</div>
+
+<% include partials/footer %>
+<% include partials/bottom %>
+
+
+<script type="module" src="/js/index.js"></script>
