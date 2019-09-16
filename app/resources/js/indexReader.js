@@ -1,5 +1,5 @@
 /* eslint-env browser */
-import PDFManager from "../js/utility/PDFManager.js";
+import PDFManager from "../js/pdf/PDFManager.js";
 import ReaderView from "../js/ui/ReaderView.js";
 import DBManager from "../js/utility/DBManager.js";
 
@@ -14,7 +14,7 @@ function init() {
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);
-    pdfManager.loadPDFbyID();
+    pdfManager.renderPDF();
 }
 
 function onShowPrevious(){

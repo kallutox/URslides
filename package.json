@@ -1,20 +1,41 @@
 {
-  "name": "projekt-starter-mme-ss19",
+  "name": "urslides",
   "version": "1.0.0",
   "description": "Startercode für die Abschlussprojekte des MME-Kurses im Sommersemester 2019",
   "main": "index.js",
   "directories": {
-    "doc": "docs"
+    "doc": "docs",
+    "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js ./app 8000"
   },
   "author": "Alexander Bazo <alexander.bazo@ur.de>",
-  "license": "MIT",
+  "license": "AFL-3.0",
   "dependencies": {
     "ejs": "^2.7.1",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
+    "mongodb": "^3.3.2",
+    "mongoose": "^5.7.1",
     "pdfjs-dist": "^2.1.266"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UniRegensburg/mme-ss19-projekte-urslides.git"
+  },
+  "keywords": [
+    "pdf",
+    "reader",
+    "comment",
+    "pdf",
+    "pdf",
+    "reader"
+  ],
+  "bugs": {
+    "url": "https://github.com/UniRegensburg/mme-ss19-projekte-urslides/issues"
+  },
+  "homepage": "https://github.com/UniRegensburg/mme-ss19-projekte-urslides#readme"
 }

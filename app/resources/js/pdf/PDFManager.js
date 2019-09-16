@@ -1,5 +1,6 @@
 /* eslint-env browser */
 //a lot of this code is based on the pdf.js example by mozilla: https://mozilla.github.io/pdf.js/examples/
+
 var isRendering = false,
     pageNumPending = null;
 
@@ -12,9 +13,9 @@ class PDFManager {
         this.currentPDF = null;
     }
 
-    loadPDFbyID(id) {
+    renderPDF(pdfPath) {
         //with this function later the Database can be accessed to get the desired item as a loadingTask-object, which represents the pdf
-        let newPDF = pdfjsLib.getDocument("/example.pdf"),
+        let newPDF = pdfjsLib.getDocument("/pdfs/example.pdf"),
             self = this;
 
         newPDF.promise.then(function (pdf) {
