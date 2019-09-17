@@ -14,7 +14,7 @@ function init() {
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);
-    pdfManager.renderPDF();
+    pdfManager.renderPDF(document.getElementById("pdf-path").textContent);
 }
 
 function onShowPrevious(){
