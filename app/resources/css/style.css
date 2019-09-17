@@ -21,8 +21,16 @@ h1 {
     color: #FAFAFA;
 }
 
+.hidden {
+    display: none;
+}
+
 .themecolor {
     color: #ff2453;
+}
+
+.theme-bg {
+    background: #ff2453;
 }
 
 header {
@@ -73,8 +81,23 @@ header {
     color: #ff2453;
 }
 
-.upload-img {
-    width: 100%;
+#upload-wrapper {
+    width: 60%;
+    margin: 0 auto;
+}
+
+#confirm-upload {
+    margin: 2rem 0;
+}
+
+#progress-label {
+    margin-top: 2rem;
+    font-size: 1.5em;
+}
+
+.progress {
+    height: 3px;
+    margin: 1em auto;
 }
 
 hr {

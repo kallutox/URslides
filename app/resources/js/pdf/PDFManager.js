@@ -14,8 +14,8 @@ class PDFManager {
     }
 
     renderPDF(pdfPath) {
-        //with this function later the Database can be accessed to get the desired item as a loadingTask-object, which represents the pdf
-        let newPDF = pdfjsLib.getDocument("/pdfs/example.pdf"),
+        //here the pdf is rendered to the canvas by using the given path
+        let newPDF = pdfjsLib.getDocument(pdfPath),
             self = this;
 
         newPDF.promise.then(function (pdf) {
