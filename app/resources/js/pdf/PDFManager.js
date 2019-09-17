@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import Observable, {Event} from "../utility/Observable.js";
 
 /* eslint-env browser */
@@ -10,8 +11,8 @@ class PDFManager extends Observable{
 
     constructor() {
         super();
+        this._currentPage = 0;
         this.maxVH = getMaxVH();
-        this.currentPage = 0;
         this.pageNum = 0;
         this.currentPDF = null;
     }
@@ -24,8 +25,8 @@ class PDFManager extends Observable{
         newPDF.promise.then(function (pdf) {
             self.currentPDF = pdf;
             self.pageNum = pdf.numPages;
-            self.currentPage = 1;
-            self.addToRenderQueue(self.currentPage);
+            self._currentPage = 1;
+            self.addToRenderQueue(self._currentPage);
         });
     }
 
@@ -34,24 +35,31 @@ class PDFManager extends Observable{
         if (isRendering) {
             pageNumPending = page;
         } else {
-            this.currentPage = page;
-            render(this.currentPDF, this.currentPage, this.maxVH);
-            this.notifyAll(new Event("pageChanged", this.currentPage + "/" + this.pageNum));
+            this._currentPage = page;
+            render(this.currentPDF, this._currentPage, this.maxVH);
+            this.notifyAll(new Event("pageChanged", {
+                currentPage: this._currentPage,
+                totalPages: this.pageNum,
+            }));
         }
     }
 
     nextPage() {
         //renders the next page, if possible
-        if (this.currentPage < this.pageNum) {
-            this.addToRenderQueue(this.currentPage + 1);
+        if (this._currentPage < this.pageNum) {
+            this.addToRenderQueue(this._currentPage + 1);
         }
     }
 
     previousPage() {
         //renders the previous page, if possible
-        if (this.currentPage > 1) {
-            this.addToRenderQueue(this.currentPage - 1);
+        if (this._currentPage > 1) {
+            this.addToRenderQueue(this._currentPage - 1);
         }
+    }
+
+    get currentPage() {
+        return this._currentPage;
     }
 }
 
