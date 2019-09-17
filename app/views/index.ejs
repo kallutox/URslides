@@ -6,10 +6,28 @@
 </header>
 
 <div id="addslides" class="homecontent">
-    <p>Add your own <span class="themecolor">slides</span>...</p>
-    <button class="btn btn-outline-danger upload-btn">+</button>
+    <div id="default-wrapper" class="">
+        <p>Add your own <span class="themecolor">slides</span>...</p>
+        <button class="btn btn-outline-danger upload-btn" id="upload-btn">+</button>
+    </div>
+    <div id="upload-wrapper" class="hidden">
+        <input type="file" name="file-upload" id="file-upload" class="hidden">
+        <div class="input-group flex-nowrap">
+            <input type="text" name="path-display" id="path-display" class="form-control"
+                placeholder="Search for slides..." disabled>
+            <button class="btn btn-outline-danger border-edge-left" id="browse-btn">Browse</button>
+        </div>
+        <button class="btn btn-danger" id="confirm-upload">Upload</button>
+        <p id="progress-label" class="hidden">now uploading...</p>
+        <div class="progress hidden">
+            <div class="progress-bar theme-bg" role="progressbar" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100"></div>
+        </div>
+    </div>
 </div>
+
 <hr>
+
 <div id="slidesearch" class="homecontent">
     <p>or search for <span class="themecolor">slides</span>!</p>
     <div class="input-group flex-nowrap">
