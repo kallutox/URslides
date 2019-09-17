@@ -1,14 +1,17 @@
+import Observable, {Event} from "../utility/Observable.js";
+
 /* eslint-env browser */
 //a lot of this code is based on the pdf.js example by mozilla: https://mozilla.github.io/pdf.js/examples/
 
 var isRendering = false,
     pageNumPending = null;
 
-class PDFManager {
+class PDFManager extends Observable{
 
     constructor() {
+        super();
         this.maxVH = getMaxVH();
-        this.currentPageOn = 0;
+        this.currentPage = 0;
         this.pageNum = 0;
         this.currentPDF = null;
     }
@@ -21,37 +24,34 @@ class PDFManager {
         newPDF.promise.then(function (pdf) {
             self.currentPDF = pdf;
             self.pageNum = pdf.numPages;
-            self.currentPageOn = 1;
-            render(self.currentPDF, self.currentPageOn, self.maxVH);
+            self.currentPage = 1;
+            self.addToRenderQueue(self.currentPage);
         });
     }
 
     addToRenderQueue(page) {
         //adds a desired page to the renderqueue
-        this.currentPageOn = page;
         if (isRendering) {
             pageNumPending = page;
         } else {
+            this.currentPage = page;
             render(this.currentPDF, this.currentPage, this.maxVH);
+            this.notifyAll(new Event("pageChanged", this.currentPage + "/" + this.pageNum));
         }
     }
 
     nextPage() {
         //renders the next page, if possible
-        if (this.currentPageOn < this.pageNum) {
+        if (this.currentPage < this.pageNum) {
             this.addToRenderQueue(this.currentPage + 1);
         }
     }
 
     previousPage() {
         //renders the previous page, if possible
-        if (this.currentPageOn > 1) {
+        if (this.currentPage > 1) {
             this.addToRenderQueue(this.currentPage - 1);
         }
-    }
-
-    get currentPage() {
-        return this.currentPageOn;
     }
 }
 

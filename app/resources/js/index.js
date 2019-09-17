@@ -1,7 +1,7 @@
 /* eslint-env browser */
 import HomeView from "../js/ui/HomeView.js";
 
-var hv = new HomeView(),
+var view = new HomeView(),
     fileUpload;
 
 function init() {
@@ -16,8 +16,8 @@ function init() {
 
 function onClickUploadButton() {
     fileUpload.click();
-    hv.showUploadButton(false);
-    hv.showUploadSection(true);
+    view.showUploadButton(false);
+    view.showUploadSection(true);
 }
 
 function onClickBrowseButton() {
@@ -27,14 +27,14 @@ function onClickBrowseButton() {
 function onFileSelection() {
     let path = fileUpload.value;
     if(path) {
-        hv.changePathDisplay(path);
+        view.changePathDisplay(path);
     }
 }
 
 function onConfirmUpload() {
-    hv.showProgressBar(true);
-    hv.showConfirmUploadButton(false);
-    hv.disableBrowseButton();
+    view.showProgressBar(true);
+    view.showConfirmUploadButton(false);
+    view.disableBrowseButton();
 }
 
 init();

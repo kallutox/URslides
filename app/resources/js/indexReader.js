@@ -14,7 +14,8 @@ function init() {
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);
-    pdfManager.renderPDF(document.getElementById("pdf-path").textContent);
+    pdfManager.addEventListener("pageChanged", onPageChanged);
+    pdfManager.renderPDF(document.getElementById("pdf-path").innerText);
 }
 
 function onShowPrevious(){
@@ -27,6 +28,10 @@ function onShowNext(){
 
 function onTextComment() {
     view.addTextComment();
+}
+
+function onPageChanged(event){
+    view.updatePageDisplay(event.data);
 }
 
 init();

@@ -6,6 +6,11 @@ class ReaderView {
         this.commentWrapper = document.getElementById("comments-wrapper");
         this.commentTextArea = document.getElementById("comment-input");
         this.heightCorrectionEl = document.getElementById("comment-height-correction");
+        this.pageDisplay = document.getElementById("page-num");
+    }
+
+    updatePageDisplay(pageValue) {
+        this.pageDisplay.innerText = pageValue;
     }
 
     addTextComment() {
