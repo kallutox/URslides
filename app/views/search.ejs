@@ -12,33 +12,11 @@
 </div>
 
 <div id="results">
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS1</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS2</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS3</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS4</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS5</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS6</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS1</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS2</div>
-    </div>
-    <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-        <div class="result-name">FS3</div>
-    </div>
+    <% slides.forEach(slide => { %>
+        <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
+            <div class="result-name"><%= slide.name %>></div>
+        </div> 
+    <% }); %>
 </div>
 
 <% include partials/bottom %>
