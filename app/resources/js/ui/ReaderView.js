@@ -4,12 +4,17 @@ class ReaderView {
 
     constructor() {
         this.backButton = document.getElementById("back-btn");
+        this.slidesName = document.getElementById("slides-name");
         this.publishButton = document.getElementById("publish-btn");
         this.commentWrapper = document.getElementById("comments-wrapper");
         this.commentInputArea = document.getElementById("input-area");
         this.commentTextArea = document.getElementById("comment-input");
         this.heightCorrectionEl = document.getElementById("comment-height-correction");
         this.pageDisplay = document.getElementById("page-num");
+    }
+
+    updateNameDisplay(name){
+        this.slidesName.innerText = name;
     }
 
     updatePageDisplay(pageValues) {

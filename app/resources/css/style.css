@@ -257,10 +257,12 @@ footer div {
 }
 
 .result-name {
+    height: 4rem;
     margin-top: 1vh;
     font-size: 1.2rem;
     border-top: 1px solid #999;
     padding-top: 0.4rem;
+    word-wrap: break-word;
 }
 
 /*bootstrap changes*/
