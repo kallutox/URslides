@@ -63,10 +63,16 @@ function intiPDF(pdfPath){
 }
 
 function initSlides(pdfName, pdfPath, pdfComments) {
-    let comments = JSON.parse(pdfComments).comments;
+    let comments = [];
+
+    if(pdfComments.trim() !== ""){
+     comments = JSON.parse(pdfComments).comments;
+    }
 
     currentSlides = new Slide(pdfName, pdfPath, comments);
     currentSlides.addEventListener("commentsChanged", onCommentsChanged);
+
+    view.updateNameDisplay(pdfName);
 }
 
 function adjustUI(edit) {
