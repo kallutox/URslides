@@ -40,24 +40,10 @@ header {
     overflow: hidden;
 }
 
-#slides-name {
-    float: left;
-    min-height: 1em;
-    width: 33.3%;
-    text-align: left;
-}
-
 #headline {
     float: left;
     width: 33.3%;
     border-bottom: 2px solid #f1f1f1;
-}
-
-#publish-btn {
-    float: right;
-    align-content: right;
-    padding-top: 0.4rem;
-    padding-bottom: 0.2rem;
 }
 
 .homecontent {
@@ -130,6 +116,27 @@ footer div {
 }
 
 /*css for reader.html*/
+#back-btn {
+    float: left;
+    min-height: 1em;
+    width: 3%;
+    text-align: left;
+}
+
+#slides-name {
+    float: left;
+    min-height: 1em;
+    width: 30.3%;
+    text-align: left;
+}
+
+#publish-btn {
+    float: right;
+    align-content: right;
+    padding-top: 0.4rem;
+    padding-bottom: 0.2rem;
+}
+
 #navline {
     width: 95%;
     height: 4em;
@@ -238,6 +245,10 @@ footer div {
     border: 2px solid #999;
     background: #f1f1f1;
     border-radius: .25rem;
+}
+
+.result-wrapper:hover {
+    border-color: #ff2453;
 }
 
 #results img {

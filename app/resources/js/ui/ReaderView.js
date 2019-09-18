@@ -3,7 +3,10 @@
 class ReaderView {
 
     constructor() {
+        this.backButton = document.getElementById("back-btn");
+        this.publishButton = document.getElementById("publish-btn");
         this.commentWrapper = document.getElementById("comments-wrapper");
+        this.commentInputArea = document.getElementById("input-area");
         this.commentTextArea = document.getElementById("comment-input");
         this.heightCorrectionEl = document.getElementById("comment-height-correction");
         this.pageDisplay = document.getElementById("page-num");
@@ -45,6 +48,30 @@ class ReaderView {
 
     addVideoComment() {
         //TODO
+    }
+
+    showCommentInputArea(isShown){
+        if(isShown) {
+            this.commentInputArea.classList.remove("hidden");
+        } else {
+            this.commentInputArea.classList.add("hidden");
+        }
+    }
+
+    showPublishButton(isShown){
+        if(isShown) {
+            this.publishButton.classList.remove("hidden");
+        } else {
+            this.publishButton.classList.add("hidden");
+        }
+    }
+
+    showBackButton(isShown){
+        if(isShown) {
+            this.backButton.classList.remove("hidden");
+        } else {
+            this.backButton.classList.add("hidden");
+        }
     }
 
     get commentInput() {

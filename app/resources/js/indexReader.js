@@ -10,22 +10,18 @@ var pdfManager = new PDFManager(),
     currentSlides;
 
 function init() {
-    var pdfPath = document.getElementById("pdf-path").innerText,
-        pdfName = document.getElementById("pdf-name").innerText;
-
-    //PDF example
-    document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
-    document.getElementById("btn-next").addEventListener("click", onShowNext);
-    document.getElementById("btn-send").addEventListener("click", onTextComment);
-    document.getElementById("publish-btn").addEventListener("click", onPublish);
-
-    pdfManager.addEventListener("pageChanged", onPageChanged);
-    pdfManager.renderPDF(pdfPath);
+    var pdfPath = document.getElementById("pdf-path").innerText.trim(),
+        pdfName = document.getElementById("pdf-name").innerText.trim(),
+        pdfComments = document.getElementById("pdf-comments").innerText,
+        pdfEdit = document.getElementById("pdf-edit").innerText.trim();
     
-    currentSlides = new Slide(pdfName, pdfPath, [], 0);
-    currentSlides.addEventListener("commentsChanged", onCommentsChanged);
+    initButtons();
+    intiPDF(pdfPath);
+    initSlides(pdfName, pdfPath, pdfComments);
+    adjustUI(pdfEdit);
 }
 
+//event handler
 function onShowPrevious() {
     pdfManager.previousPage();
 }
@@ -51,6 +47,34 @@ function onCommentsChanged(event) {
 
 function onPublish() {
     conn.post(currentSlides.generateJSONString());
+}
+
+//init functions
+function initButtons() {
+    document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
+    document.getElementById("btn-next").addEventListener("click", onShowNext);
+    document.getElementById("btn-send").addEventListener("click", onTextComment);
+    document.getElementById("publish-btn").addEventListener("click", onPublish);
+}
+
+function intiPDF(pdfPath){
+    pdfManager.addEventListener("pageChanged", onPageChanged);
+    pdfManager.renderPDF(pdfPath);
+}
+
+function initSlides(pdfName, pdfPath, pdfComments) {
+    let comments = JSON.parse(pdfComments).comments;
+
+    currentSlides = new Slide(pdfName, pdfPath, comments);
+    currentSlides.addEventListener("commentsChanged", onCommentsChanged);
+}
+
+function adjustUI(edit) {
+    if(edit !== "true") {
+        view.showPublishButton(false);
+        view.showCommentInputArea(false);
+        view.showBackButton(true);
+    }
 }
 
 init();

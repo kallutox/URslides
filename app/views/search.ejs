@@ -13,9 +13,11 @@
 
 <div id="results">
     <% slides.forEach(slide => { %>
-        <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-            <div class="result-name"><%= slide.name %>></div>
-        </div> 
+        <a href="/reader/<%= slide._id%>">
+            <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
+                <div class="result-name"><%= slide.name %>></div>
+            </div>
+        </a>
     <% }); %>
 </div>
 

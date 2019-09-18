@@ -5,12 +5,12 @@ import Observable, { Event } from "../utility/Observable.js";
 
 class Slide extends Observable{
 
-    constructor(name, pdf, comments, idCount) {
+    constructor(name, pdf, comments) {
         super();
         this._name = name;
         this._comments = comments;
         this.pdf = pdf;
-        this.idCount = idCount;
+        this.idCount = 0;
 
         this.notifyAll(new Event("commentsChanged", this.comments));
     }

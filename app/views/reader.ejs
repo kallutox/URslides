@@ -1,6 +1,7 @@
 <% include partials/top %>
 
 <header>
+    <a href="/search"><p id="back-btn" class="themecolor hidden"><strong>&lt;</strong></p></a>
     <p id="slides-name">MySlides</p>
     <p id="headline"><span class="themecolor">UR</span>slides</p>
     <a href="/search"><button id="publish-btn" class="btn btn-danger">Publish slides</button></a>
@@ -15,6 +16,9 @@
         </p>
         <p id="pdf-name" class="hidden">
             <%= name %>
+        </p>
+        <p id="pdf-comments" class="hidden">
+            <%= comments %>
         </p>
         <p id="pdf-edit" class="hidden">
             <%= edit %>
