@@ -53,7 +53,7 @@ header {
     border-bottom: 2px solid #f1f1f1;
 }
 
-#head-btn {
+#publish-btn {
     float: right;
     align-content: right;
     padding-top: 0.4rem;
@@ -255,6 +255,7 @@ footer div {
 /*bootstrap changes*/
 .btn-outline-danger {
     border-color: #ff2453;
+    background: #FFF;
 }
 
 .btn-outline-danger:hover{

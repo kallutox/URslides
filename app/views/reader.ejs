@@ -3,7 +3,7 @@
 <header>
     <p id="slides-name">MySlides</p>
     <p id="headline"><span class="themecolor">UR</span>slides</p>
-    <button id="head-btn" class="btn btn-danger">Save comments</button>
+    <a href="/search"><button id="publish-btn" class="btn btn-danger">Save comments</button></a>
 </header>
 
 <div id="navline"></div>
@@ -13,6 +13,12 @@
         <p id="pdf-path" class="hidden">
             <%= path %>
         </p>
+        <p id="pdf-name" class="hidden">
+            <%= name %>
+        </p>
+        <p id="pdf-edit" class="hidden">
+            <%= edit %>
+        </p>
         <div id="reader-nav"><button id="btn-previous">prev</button>
             <p id="page-num">1</p><button id="btn-next">next</button>
         </div>
@@ -20,20 +26,6 @@
     </div>
     <div id="comment-section-wrapper">
         <div id="comments-wrapper">
-            <p class="text-comment">Trump Ipsum is calling for a total and complete shutdown of Muslim text entering
-                your
-                website. I will write some great placeholder text – and nobody writes better placeholder text than
-                me,
-                believe me – and I’ll write it very inexpensively. I will write some great, great text on your
-                website’s
-                Southern border, and I will make Google pay for that text. Mark my words. We have so many things
-                that we
-                have to do better... and certainly ipsum is one of them. Lorem Ipsum best not make any more threats
-                to
-                your website. It will be met with fire and fury like the world has never seen. Look at these words.
-                Are
-                they small words? And he referred to my words - if they're small, something else must be small. I
-                guarantee you there's no problem, I guarantee.</p>
             <div id="comment-height-correction"></div>
         </div>
         <div id="input-area">

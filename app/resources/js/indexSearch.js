@@ -1,7 +1,5 @@
 /* eslint-env browser */
-import PDFManager from "../js/utility/PDFManager.js";
-
-var pdfManager = new PDFManager();
+import PDFManager from "../js/pdf/PDFManager.js";
 
 function init() {
     console.log("app started!");
