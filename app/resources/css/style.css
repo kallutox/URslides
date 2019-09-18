@@ -255,6 +255,7 @@ footer div {
 /*bootstrap changes*/
 .btn-outline-danger {
     border-color: #ff2453;
+    background: #FFF;
 }
 
 .btn-outline-danger:hover{
