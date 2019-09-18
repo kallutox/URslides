@@ -3,9 +3,10 @@
 
 class Comment {
 
-    constructor(id, page, content) {
+    constructor(id, page, type, content) {
         this._id = id;
         this._page = page;
+        this._type = type;
         this._content = content;
     }
 
@@ -17,6 +18,10 @@ class Comment {
         return this._page;
     }
 
+    get type() {
+        return this._type;
+    }
+    
     get content() {
         return this._content;
     }

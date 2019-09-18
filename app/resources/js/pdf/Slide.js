@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
-import Comment from "../pdf/Comment.js";
+import TextComment from "../pdf/TextComment.js";
 import Observable, { Event } from "../utility/Observable.js";
 
 class Slide extends Observable{
@@ -15,9 +15,11 @@ class Slide extends Observable{
         this.notifyAll(new Event("commentsChanged", this.comments));
     }
 
-    addComment(page, comment) {
+    addComment(page, type, comment) {
         if(comment !== "") {
-            this._comments.push(new Comment(this.idCount, page, comment));
+            if(type === "text") {
+                this._comments.push(new TextComment(this.idCount, page, comment));
+            }
             this.idCount++;
         }
         this.notifyAll(new Event("commentsChanged", this.comments));
@@ -30,6 +32,25 @@ class Slide extends Observable{
             }
         }
         this.notifyAll(new Event("commentsChanged", this.comments));
+    }
+
+    generateJSONString() {
+        let literal = {
+            name: this._name,
+            pdfPath: this.pdf,
+            comments: [
+            ],
+        };
+        
+        this._comments.forEach(comment => {
+            literal.comments.push({
+                id: comment.id,
+                page: comment.page,
+                content: comment.content,
+            });
+        });
+
+        return JSON.stringify(literal);
     }
 
     /**

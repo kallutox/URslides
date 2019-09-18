@@ -1,12 +1,12 @@
 /* eslint-env browser */
 import PDFManager from "../js/pdf/PDFManager.js";
 import ReaderView from "../js/ui/ReaderView.js";
-import DBManager from "../js/utility/DBManager.js";
 import Slide from "../js/pdf/Slide.js";
+import Connection from "../js/utility/Connection.js";
 
 var pdfManager = new PDFManager(),
     view = new ReaderView(),
-    dbm = new DBManager(),
+    conn = new Connection(),
     currentSlides;
 
 function init() {
@@ -17,6 +17,7 @@ function init() {
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);
+    document.getElementById("publish-btn").addEventListener("click", onPublish);
 
     pdfManager.addEventListener("pageChanged", onPageChanged);
     pdfManager.renderPDF(pdfPath);
@@ -25,27 +26,31 @@ function init() {
     currentSlides.addEventListener("commentsChanged", onCommentsChanged);
 }
 
-function onShowPrevious(){
+function onShowPrevious() {
     pdfManager.previousPage();
 }
 
-function onShowNext(){
+function onShowNext() {
     pdfManager.nextPage();
 }
 
 function onTextComment() {
     let comment = view.commentInput;
 
-    currentSlides.addComment(pdfManager.currentPage, comment);
+    currentSlides.addComment(pdfManager.currentPage, "text", comment);
 }
 
-function onPageChanged(event){
+function onPageChanged(event) {
     view.updatePageDisplay(event.data);
     view.updateComments(event.data.currentPage, currentSlides.comments);
 }
 
-function onCommentsChanged(event){
+function onCommentsChanged(event) {
     view.updateComments(pdfManager.currentPage, event.data);
+}
+
+function onPublish() {
+    conn.post(currentSlides.generateJSONString());
 }
 
 init();
