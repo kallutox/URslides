@@ -3,7 +3,7 @@
 class Connection {
 
     constructor() {
-        this.xhr =  new XMLHttpRequest();
+        this.xhr = new XMLHttpRequest();
     }
 
     get(){

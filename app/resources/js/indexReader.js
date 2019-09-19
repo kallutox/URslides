@@ -14,7 +14,7 @@ function init() {
         pdfName = document.getElementById("pdf-name").innerText.trim(),
         pdfComments = document.getElementById("pdf-comments").innerText,
         pdfEdit = document.getElementById("pdf-edit").innerText.trim();
-    
+
     initButtons();
     intiPDF(pdfPath);
     initSlides(pdfName, pdfPath, pdfComments);
@@ -32,7 +32,6 @@ function onShowNext() {
 
 function onTextComment() {
     let comment = view.commentInput;
-
     currentSlides.addComment(pdfManager.currentPage, "text", comment);
 }
 

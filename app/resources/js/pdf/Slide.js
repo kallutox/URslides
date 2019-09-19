@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-env browser */
 import TextComment from "../pdf/TextComment.js";
+import VideoComment from "../pdf/VideoComment.js";
+import AudioComment from "../pdf/AudioComment.js";
 import Observable, { Event } from "../utility/Observable.js";
 
 class Slide extends Observable{
@@ -19,6 +21,12 @@ class Slide extends Observable{
         if(comment !== "") {
             if(type === "text") {
                 this._comments.push(new TextComment(this.idCount, page, comment));
+            }
+            if(type === "video") {
+                this._comments.push(new VideoComment(this.idCount, page, comment));
+            }
+            if(type === "audio") {
+                this._comments.push(new AudioComment(this.idCount, page, comment));
             }
             this.idCount++;
         }
@@ -41,7 +49,7 @@ class Slide extends Observable{
             comments: [
             ],
         };
-        
+
         this._comments.forEach(comment => {
             literal.comments.push({
                 id: comment.id,
@@ -59,7 +67,7 @@ class Slide extends Observable{
     set name(name) {
         this._name = name;
     }
-    
+
     get comments(){
         return this._comments;
     }
