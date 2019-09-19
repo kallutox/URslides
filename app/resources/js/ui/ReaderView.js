@@ -11,6 +11,9 @@ class ReaderView {
         this.commentTextArea = document.getElementById("comment-input");
         this.heightCorrectionEl = document.getElementById("comment-height-correction");
         this.pageDisplay = document.getElementById("page-num");
+
+        this.videoButton = document.getElementById("video-btn");
+        this.audioButton = document.getElementById("audio-btn");
     }
 
     updateNameDisplay(name){

@@ -186,6 +186,7 @@ footer div {
     height: 70vh;
     position: relative;
 }
+
 #comments-wrapper {
     height: 100%;
     overflow-x: hidden;
@@ -226,6 +227,14 @@ footer div {
     height: 100%;
 }
 
+#audio-btn {
+  
+}
+
+#video-btn {
+
+}
+
 /*css for search.html*/
 #search-page-input {
     width: 70%;
@@ -264,6 +273,7 @@ footer div {
     padding-top: 0.4rem;
     word-wrap: break-word;
 }
+
 
 /*bootstrap changes*/
 .btn-outline-danger {
