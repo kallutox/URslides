@@ -9,6 +9,7 @@
 
 <div id="navline"></div>
 
+
 <div id="reader-wrapper">
     <div id="reader">
         <p id="pdf-path" class="hidden">
@@ -28,11 +29,22 @@
         </div>
         <canvas id="reader-canvas" width="200" height="400"></canvas>
     </div>
+
     <div id="comment-section-wrapper">
         <div id="comments-wrapper">
             <div id="comment-height-correction"></div>
         </div>
+
+        <div id="add-comments-btn">
+
+          <button id="audio-btn" class="btn btn-outline-danger border-edge-left-right">Add Audio Comment</button>
+          <br> <br> <br>
+          <button id="video-btn" class="btn btn-outline-danger border-edge-left-right">Add Video Comment</button>
+
+        </div>
+
         <div id="input-area">
+
             <textarea class="form-control border-edge-right" id="comment-input"
                 placeholder="Write a comment..."></textarea>
             <button id="btn-send" class="btn btn-outline-danger border-edge-left">send</button>
