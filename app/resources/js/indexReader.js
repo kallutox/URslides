@@ -59,14 +59,43 @@ function onVideoComment() {
     view.showVideoSection(true);
 }
 
+function onAudioUpload() {
+
+  let comment = view.commentInput;
+  currentSlides.addComment(pdfManager.currentPage, "audio", comment);
+}
+
+function onAudioRecord() {
+  //TO DO
+}
+
+function onVideoUpload() {
+
+  let comment = view.commentInput;
+  currentSlides.addComment(pdfManager.currentPage, "video", comment);
+}
+
+function onVideoRecord() {
+  //TO DO
+}
+
 //init functions
 function initButtons() {
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);
     document.getElementById("publish-btn").addEventListener("click", onPublish);
+
     document.getElementById("audio-btn").addEventListener("click", onAudioComment);
     document.getElementById("video-btn").addEventListener("click", onVideoComment);
+    document.getElementById("audio-upload-btn").addEventListener("click", onAudioUpload);
+    document.getElementById("audio-record-btn").addEventListener("click", onAudioRecord);
+    document.getElementById("audio-browse-btn").addEventListener("click", onClickAudioBrowseButton);
+    document.getElementById("video-upload-btn").addEventListener("click", onVideoUpload);
+    document.getElementById("video-record-btn").addEventListener("click", onVideoRecord);
+    document.getElementById("video-browse-btn").addEventListener("click", onClickVideoBrowseButton);
+
+    document.getElementById("slides-name").addEventListener("click", );
 }
 
 function intiPDF(pdfPath){

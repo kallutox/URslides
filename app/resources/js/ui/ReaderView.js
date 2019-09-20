@@ -52,11 +52,18 @@ class ReaderView {
         });
     }
 
-    addAudioComment() {
+    uploadAudioComment() {
         //TODO
     }
 
-    addVideoComment() {
+    recordAudioComment() {
+        //TODO
+    }
+    uploadVideoComment() {
+        //TODO
+    }
+
+    recordVideoComment() {
         //TODO
     }
 
@@ -101,11 +108,19 @@ class ReaderView {
     }
 
     showAudioSection(isShown){
-
+      if(isShown){
+        this.audioSection.classList.remove("hidden");
+      } else {
+        this.audioSection.classList.add("hidden");
+      }
     }
 
     showVideoSection(isShown){
-
+      if(isShown){
+        this.videoSection.classList.remove("hidden");
+      } else {
+        this.videoSection.classList.add("hidden");
+      }
     }
 
     get commentInput() {

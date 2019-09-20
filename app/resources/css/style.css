@@ -238,25 +238,49 @@ footer div {
   float: left;
   width: 60%;
   height: 15%;
+  margin: 1rem 0;
 }
 
 #video-btn {
   float: left;
   width: 60%;
   height: 15%;
+  margin: 1rem 0;
 }
 
 #audio-section {
-
+  float: left;
+  width: 60%;
+  height: 15%;
+  margin: 1rem 0;
 }
 
 #video-section {
-  
+  float: left;
+  width: 60%;
+  height: 15%;
+  margin: 1rem 0;
 }
 
-#add-comments-btn {
+#audio-upload-btn {
+
+}
+
+#audio-record-btn {
+
+}
+
+#video-upload-btn {
+
+}
+
+#video-record-btn {
+
+}
+
+#add-comments-section {
   width: 100%;
-  height: 55%;
+  height: 60%;
   position: absolute;
   bottom: 0;
 }
