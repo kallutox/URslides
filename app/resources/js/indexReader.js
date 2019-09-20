@@ -48,12 +48,25 @@ function onPublish() {
     conn.post(currentSlides.generateJSONString());
 }
 
+function onAudioComment() {
+    //fileUpload.click();
+    view.showAudioButton(false);
+    view.showAudioSection(true);
+}
+
+function onVideoComment() {
+    view.showVideoButton(false);
+    view.showVideoSection(true);
+}
+
 //init functions
 function initButtons() {
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);
     document.getElementById("publish-btn").addEventListener("click", onPublish);
+    document.getElementById("audio-btn").addEventListener("click", onAudioComment);
+    document.getElementById("video-btn").addEventListener("click", onVideoComment);
 }
 
 function intiPDF(pdfPath){

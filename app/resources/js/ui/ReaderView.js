@@ -14,6 +14,8 @@ class ReaderView {
 
         this.videoButton = document.getElementById("video-btn");
         this.audioButton = document.getElementById("audio-btn");
+        this.videoSection = document.getElementById("video-section");
+        this.audioSection = document.getElementById("audio-section");
     }
 
     updateNameDisplay(name){
@@ -80,6 +82,30 @@ class ReaderView {
         } else {
             this.backButton.classList.add("hidden");
         }
+    }
+
+    showAudioButton(isShown){
+      if(isShown){
+        this.audioButton.classList.remove("hidden");
+      } else {
+        this.audioButton.classList.add("hidden");
+      }
+    }
+
+    showVideoButton(isShown){
+      if(isShown){
+        this.videoButton.classList.remove("hidden");
+      } else {
+        this.videoButton.classList.add("hidden");
+      }
+    }
+
+    showAudioSection(isShown){
+
+    }
+
+    showVideoSection(isShown){
+
     }
 
     get commentInput() {
