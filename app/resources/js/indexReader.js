@@ -19,6 +19,7 @@ function init() {
     intiPDF(pdfPath);
     initSlides(pdfName, pdfPath, pdfComments);
     adjustUI(pdfEdit);
+    updatePdfName();
 }
 
 //event handler
@@ -49,7 +50,6 @@ function onPublish() {
 }
 
 function onAudioComment() {
-    //fileUpload.click();
     view.showAudioButton(false);
     view.showAudioSection(true);
 }
@@ -61,8 +61,8 @@ function onVideoComment() {
 
 function onAudioUpload() {
 
-  let comment = view.commentInput;
-  currentSlides.addComment(pdfManager.currentPage, "audio", comment);
+  //let comment = view.commentInput;
+  //currentSlides.addComment(pdfManager.currentPage, "audio", comment);
 }
 
 function onAudioRecord() {
@@ -70,9 +70,7 @@ function onAudioRecord() {
 }
 
 function onVideoUpload() {
-
-  let comment = view.commentInput;
-  currentSlides.addComment(pdfManager.currentPage, "video", comment);
+  //TO DO
 }
 
 function onVideoRecord() {
@@ -90,12 +88,10 @@ function initButtons() {
     document.getElementById("video-btn").addEventListener("click", onVideoComment);
     document.getElementById("audio-upload-btn").addEventListener("click", onAudioUpload);
     document.getElementById("audio-record-btn").addEventListener("click", onAudioRecord);
-    document.getElementById("audio-browse-btn").addEventListener("click", onClickAudioBrowseButton);
     document.getElementById("video-upload-btn").addEventListener("click", onVideoUpload);
     document.getElementById("video-record-btn").addEventListener("click", onVideoRecord);
-    document.getElementById("video-browse-btn").addEventListener("click", onClickVideoBrowseButton);
 
-    document.getElementById("slides-name").addEventListener("click", );
+  //  document.getElementById("slides-name").addEventListener("click", );
 }
 
 function intiPDF(pdfPath){
@@ -122,6 +118,16 @@ function adjustUI(edit) {
         view.showCommentInputArea(false);
         view.showBackButton(true);
     }
+}
+
+// funktioniert nicht
+function updatePdfName(nameEdited) {
+  var pdfName = document.getElementById("slides-name");
+  if(nameEdited) {
+    pdfName.onblur = function() {
+      currentSlides.name(pdfName.innerText);
+    };
+  }
 }
 
 init();

@@ -71,6 +71,10 @@ class Slide extends Observable{
     get comments(){
         return this._comments;
     }
+
+    get name() {
+      return this._name;
+    }
 }
 
 export default Slide;
