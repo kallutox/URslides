@@ -113,6 +113,11 @@ function adjustUI(edit) {
         view.showPublishButton(false);
         view.showCommentInputArea(false);
         view.showBackButton(true);
+        view.showVideoButton(false);
+        view.showAudioButton(false);
+        view.showVideoSection(false);
+        view.showAudioSection(false);
+        view.editSlidesName(false);
     }
 }
 

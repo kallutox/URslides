@@ -16,9 +16,11 @@ class ReaderView {
         this.audioButton = document.getElementById("audio-btn");
         this.videoSection = document.getElementById("video-section");
         this.audioSection = document.getElementById("audio-section");
+
+        this.slidesName = document.getElementById("slides-name");
     }
 
-    updateNameDisplay(name){
+    updateNameDisplay(name) {
         this.slidesName.innerText = name + "  🖉";
     }
 
@@ -120,6 +122,14 @@ class ReaderView {
         this.videoSection.classList.remove("hidden");
       } else {
         this.videoSection.classList.add("hidden");
+      }
+    }
+
+    editSlidesName(editable){
+      if(editable){
+        this.slidesName.contentEditable = "true";
+      } else {
+        this.slidesName.contentEditable = "false";
       }
     }
 
