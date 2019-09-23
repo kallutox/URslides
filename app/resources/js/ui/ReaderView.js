@@ -24,6 +24,10 @@ class ReaderView {
         this.slidesName.innerText = name + "  🖉";
     }
 
+    deleteEditSign() {
+      this.slidesName.innerText = this.slidesName.innerText.substring(0, this.slidesName.innerText.length - 2);
+    }
+
     updatePageDisplay(pageValues) {
         this.pageDisplay.innerText = pageValues.currentPage + "/" + pageValues.totalPages;
     }
