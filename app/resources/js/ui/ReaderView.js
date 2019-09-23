@@ -19,7 +19,7 @@ class ReaderView {
     }
 
     updateNameDisplay(name){
-        this.slidesName.innerText = name;
+        this.slidesName.innerText = name + "  🖉";
     }
 
     updatePageDisplay(pageValues) {
