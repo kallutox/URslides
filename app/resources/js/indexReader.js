@@ -7,13 +7,17 @@ import Connection from "../js/utility/Connection.js";
 var pdfManager = new PDFManager(),
     view = new ReaderView(),
     conn = new Connection(),
-    currentSlides;
+    currentSlides,
+    audioUpload,
+    videoUpload;
 
 function init() {
     var pdfPath = document.getElementById("pdf-path").innerText.trim(),
         pdfName = document.getElementById("pdf-name").innerText.trim(),
         pdfComments = document.getElementById("pdf-comments").innerText,
         pdfEdit = document.getElementById("pdf-edit").innerText.trim();
+        audioUpload = document.getElementById("audio-upload");
+        videoUpload = document.getElementById("video-upload");
 
     initButtons();
     intiPDF(pdfPath);
@@ -59,9 +63,9 @@ function onVideoComment() {
 }
 
 function onAudioUpload() {
-
-  //let comment = view.commentInput;
-  //currentSlides.addComment(pdfManager.currentPage, "audio", comment);
+  audioUpload.click();
+  let comment = view.commentInput;
+  currentSlides.addComment(pdfManager.currentPage, "audio", comment);
 }
 
 function onAudioRecord() {
@@ -69,7 +73,9 @@ function onAudioRecord() {
 }
 
 function onVideoUpload() {
-  //TO DO
+  videoUpload.click();
+  let comment = view.commentInput;
+  currentSlides.addComment(pdfManager.currentPage, "video", comment);
 }
 
 function onVideoRecord() {
@@ -89,6 +95,7 @@ function initButtons() {
     document.getElementById("audio-record-btn").addEventListener("click", onAudioRecord);
     document.getElementById("video-upload-btn").addEventListener("click", onVideoUpload);
     document.getElementById("video-record-btn").addEventListener("click", onVideoRecord);
+
 }
 
 function intiPDF(pdfPath){

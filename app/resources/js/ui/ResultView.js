@@ -1,6 +1,6 @@
 /* eslint-env browser */
 
-class ResutView {
+class ResultView {
 
   constructor() {
     this.searchInput = document.getElementById("search-page-input");

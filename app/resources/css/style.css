@@ -249,6 +249,7 @@ footer div {
 }
 
 #audio-section {
+  text-align: inherit;
   float: left;
   width: 60%;
   height: 15%;
@@ -256,6 +257,7 @@ footer div {
 }
 
 #video-section {
+  text-align: inherit;
   float: left;
   width: 60%;
   height: 15%;
@@ -263,11 +265,11 @@ footer div {
 }
 
 #audio-upload-btn {
-
+  display: inline-block;
 }
 
 #audio-record-btn {
-
+  display: inline-block;
 }
 
 #video-upload-btn {

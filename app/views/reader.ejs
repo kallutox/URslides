@@ -41,12 +41,20 @@
           <button id="video-btn" class="btn btn-outline-danger border-edge-left-right">Add Video Comment</button>
 
           <div id="audio-section" class= "hidden">
-            <button id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">Upload Audio</button>
+            <form method="post">
+                <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload" class="hidden">
+                <button type="submit" id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
+                  Upload Audio</button>
+            </form>
             <button id="audio-record-btn" class="btn btn-outline-danger border-edge-left-right">Record Audio</button>
           </div>
 
           <div id="video-section" class="hidden">
-            <button id="video-upload-btn" class="btn btn-outline-danger border-edge-left-right">Upload Video</button>
+            <form method="post">
+                <input type="file" accept=".mp4,video/*" name="video-upload" id="video-upload" class="hidden">
+                <button type="submit" id="video-upload-btn" class="btn btn-outline-danger border-edge-left-right">
+                  Upload Video</button>
+            </form>
             <button id="video-record-btn" class="btn btn-outline-danger border-edge-left-right">Record Video</button>
           </div>
 
