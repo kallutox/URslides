@@ -82,7 +82,7 @@ function render(pdf, page, vh) {
             canvasContext: context,
             viewport: viewport,
         };
-        
+
         renderTask = page.render(renderContext);
         renderTask.promise.then(function() {
             isRendering = false;

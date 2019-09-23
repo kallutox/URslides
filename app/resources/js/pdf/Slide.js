@@ -42,9 +42,9 @@ class Slide extends Observable{
         this.notifyAll(new Event("commentsChanged", this.comments));
     }
 
-    generateJSONString() {
+    generateJSONString(name) {
         let literal = {
-            name: this._name,
+            name: name,
             pdfPath: this.pdf,
             comments: [
             ],
@@ -70,10 +70,6 @@ class Slide extends Observable{
 
     get comments(){
         return this._comments;
-    }
-
-    get name() {
-      return this._name;
     }
 }
 

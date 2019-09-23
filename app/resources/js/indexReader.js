@@ -19,7 +19,6 @@ function init() {
     intiPDF(pdfPath);
     initSlides(pdfName, pdfPath, pdfComments);
     adjustUI(pdfEdit);
-    updatePdfName();
 }
 
 //event handler
@@ -46,7 +45,7 @@ function onCommentsChanged(event) {
 }
 
 function onPublish() {
-    conn.post(currentSlides.generateJSONString());
+    conn.post(currentSlides.generateJSONString(document.getElementById("slides-name").innerHTML));
 }
 
 function onAudioComment() {
@@ -90,8 +89,6 @@ function initButtons() {
     document.getElementById("audio-record-btn").addEventListener("click", onAudioRecord);
     document.getElementById("video-upload-btn").addEventListener("click", onVideoUpload);
     document.getElementById("video-record-btn").addEventListener("click", onVideoRecord);
-
-  //  document.getElementById("slides-name").addEventListener("click", );
 }
 
 function intiPDF(pdfPath){
@@ -108,7 +105,6 @@ function initSlides(pdfName, pdfPath, pdfComments) {
 
     currentSlides = new Slide(pdfName, pdfPath, comments);
     currentSlides.addEventListener("commentsChanged", onCommentsChanged);
-
     view.updateNameDisplay(pdfName);
 }
 
@@ -118,16 +114,6 @@ function adjustUI(edit) {
         view.showCommentInputArea(false);
         view.showBackButton(true);
     }
-}
-
-// funktioniert nicht
-function updatePdfName(nameEdited) {
-  var pdfName = document.getElementById("slides-name");
-  if(nameEdited) {
-    pdfName.onblur = function() {
-      currentSlides.name(pdfName.innerText);
-    };
-  }
 }
 
 init();
