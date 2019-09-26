@@ -143,6 +143,7 @@ class ReaderView {
       name: slide.name,
       pdf: slide.pdf,
       comments: slide.comments,
+      idCount: slide.idCount,
     });
   }
 

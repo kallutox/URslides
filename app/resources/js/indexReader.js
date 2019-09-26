@@ -46,7 +46,6 @@ function onPageChanged(event) {
 }
 
 function onCommentsChanged(event) {
-    console.log("comment!");
     view.updateComments(pdfManager.currentPage, event.data);
 }
 
