@@ -15,14 +15,15 @@ function init() {
     var pdfPath = document.getElementById("pdf-path").innerText.trim(),
         pdfName = document.getElementById("pdf-name").innerText.trim(),
         pdfComments = document.getElementById("pdf-comments").innerText,
-        pdfEdit = document.getElementById("pdf-edit").innerText.trim();
+        pdfEdit = document.getElementById("pdf-edit").innerText.trim(),
+        pdfIDCount = document.getElementById("pdf-idcount").innerText.trim();
     
     //not good, place elsewhere
     audioUpload = document.getElementById("audio-upload");
 
     initButtons();
     intiPDF(pdfPath);
-    initSlides(pdfName, pdfPath, pdfComments);
+    initSlides(pdfName, pdfPath, pdfComments, pdfIDCount);
     adjustUI(pdfEdit);
 }
 
@@ -88,11 +89,11 @@ function onPublish() {
 
 //init functions
 function initButtons() {
+    //init all Buttons needed in the index module
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);
     document.getElementById("publish-btn").addEventListener("click", onPublish);
-
     document.getElementById("audio-btn").addEventListener("click", onAudioComment);
     document.getElementById("video-btn").addEventListener("click", onVideoComment);
     document.getElementById("audio-upload-btn").addEventListener("click", onAudioUpload);
@@ -106,15 +107,22 @@ function intiPDF(pdfPath){
     pdfManager.renderPDF(pdfPath);
 }
 
-function initSlides(pdfName, pdfPath, pdfComments) {
-    let comments = [];
+function initSlides(pdfName, pdfPath, pdfComments, pdfIDCount) {
+    var comments = [],
+        idCount = 0;
 
+    //test if there are comments given
     if(pdfComments.trim() !== ""){
-     comments = JSON.parse(pdfComments).comments;
+        comments = JSON.parse(pdfComments).comments;
+    }
+
+    //test if an idCount is already given
+    if(pdfIDCount !== ""){
+        idCount = pdfIDCount;
     }
 
     //init the current slide
-    currentSlides = new Slide(pdfName, pdfPath, []);
+    currentSlides = new Slide(pdfName, pdfPath, [], idCount);
     comments.forEach(comment => {
         // eslint-disable-next-line no-underscore-dangle
         currentSlides.addComment(comment._page, comment._type, comment._content);
