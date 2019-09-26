@@ -1,6 +1,7 @@
 # URslides
 
 Die Anwendung *URslides* ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text, Audio oder Video können veröffentlicht und so den Studierenden zugänglich gemacht werden. 
+
 (Screenshot + Link to be added)
 
 ## Team
@@ -24,5 +25,19 @@ So nutzen Sie den vorgegebenen Server:
 [Beschreiben Sie alle Schritte, die notwendig sind um Ihre Anwendung auf Basis dieses Repositories zu starten.]
 
 ## Beschreibung
+
+[Screenshots + Formatierung folgen]
+
+URslides bietet den Benutzern die folgenden Funktionen:
+
+- Das Hochladen von Foliensätzen im pdf-Format und deren persistente Speicherung in einer Datenbank
+- Eine Ansicht für die Betrachtung der Foliensätze und das Durchblättern durch diese
+- Das Ändern und Speichern des Dateinames in der Awendung
+- Die Erstellung von Kommentaren zu einzelnen Seiten seiner eigenen Foliensätze im Anschluss an dessen Upload
+  - Textkommentare
+  - Audiokommentare: Upload oder direkte Aufnahme
+  - Videokommentare: Upload oder direkte Aufnahme
+- Das Durchsuchen aller hochgeladenen Foliensätze anhand deren Namen
+
 
 [Dokumentieren Sie ausführlich alle Funktionen der Anwendung. Verwenden Sie Screenshots und ggf. auch Gif-Dateien um zentrale Elemente und Abläufe zu beschreiben.]
