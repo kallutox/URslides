@@ -214,6 +214,16 @@ footer div {
     border-radius: .5rem;
     border-top-left-radius: 0;
     padding: 1.7vh;
+    
+}
+
+.audio-comment {
+    width: 90%;
+    margin: 0 auto 2vh auto;
+    border: 2px solid #ff2453;
+    border-radius: .5rem;
+    border-top-right-radius: 0;
+    padding: 1.7vh;
 }
 
 #comment-height-correction {
@@ -228,8 +238,8 @@ footer div {
     bottom: 0;
 }
 
-#input-area textarea {
-    width: 60%;
+#comment-input {
+    width: 70%;
     height: 100%;
     float: left;
 }
@@ -241,56 +251,46 @@ footer div {
 }
 
 #audio-btn {
-  float: left;
-  width: 60%;
-  height: 15%;
-  margin: 1rem 0;
+    float: left;
+    width: 95%;
+    height: 45%;
+    margin-left: 2.5%;
+    margin-bottom: 0.9vh;
 }
 
 #video-btn {
-  float: left;
-  width: 60%;
-  height: 15%;
-  margin: 1rem 0;
+    float: left;
+    width: 95%;
+    height: 45%;
+    margin-top: 0.9vh;
+    margin-left: 2.5%;
 }
 
 #audio-section {
-  text-align: inherit;
-  float: left;
-  width: 60%;
-  height: 15%;
-  margin: 1rem 0;
+    float: left;
+    width: 95%;
+    height: 50%;
 }
 
 #video-section {
-  text-align: inherit;
-  float: left;
-  width: 60%;
-  height: 15%;
-  margin: 1rem 0;
+    float: left;
+    width: 95%;
+    height: 50%;
 }
 
 #audio-upload-btn {
-  display: inline-block;
+    display: inline-block;
 }
 
 #audio-record-btn {
-  display: inline-block;
-}
-
-#video-upload-btn {
-
-}
-
-#video-record-btn {
-
+    display: inline-block;
 }
 
 #add-comments-section {
-  width: 100%;
-  height: 60%;
-  position: absolute;
-  bottom: 0;
+  width: 20%;
+  height: 100%;
+  float: left;
+  margin: 0 auto;
 }
 
 /*css for search.html*/

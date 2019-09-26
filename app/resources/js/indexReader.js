@@ -63,9 +63,10 @@ function onVideoComment() {
 }
 
 function onAudioUpload() {
-  audioUpload.click();
-  let comment = view.commentInput;
-  currentSlides.addComment(pdfManager.currentPage, "audio", comment);
+    let comment = view.commentInput;
+
+    audioUpload.click();
+    currentSlides.addComment(pdfManager.currentPage, "audio", comment);
 }
 
 function onAudioRecord() {
@@ -73,9 +74,10 @@ function onAudioRecord() {
 }
 
 function onVideoUpload() {
-  videoUpload.click();
-  let comment = view.commentInput;
-  currentSlides.addComment(pdfManager.currentPage, "video", comment);
+    let comment = view.commentInput;
+
+    videoUpload.click();
+    currentSlides.addComment(pdfManager.currentPage, "video", comment);
 }
 
 function onVideoRecord() {
@@ -95,7 +97,6 @@ function initButtons() {
     document.getElementById("audio-record-btn").addEventListener("click", onAudioRecord);
     document.getElementById("video-upload-btn").addEventListener("click", onVideoUpload);
     document.getElementById("video-record-btn").addEventListener("click", onVideoRecord);
-
 }
 
 function intiPDF(pdfPath){
