@@ -16,8 +16,9 @@ function init() {
         pdfName = document.getElementById("pdf-name").innerText.trim(),
         pdfComments = document.getElementById("pdf-comments").innerText,
         pdfEdit = document.getElementById("pdf-edit").innerText.trim();
-        audioUpload = document.getElementById("audio-upload");
-        videoUpload = document.getElementById("video-upload");
+    
+    //not good, place elsewhere
+    audioUpload = document.getElementById("audio-upload");
 
     initButtons();
     intiPDF(pdfPath);
@@ -45,11 +46,8 @@ function onPageChanged(event) {
 }
 
 function onCommentsChanged(event) {
+    console.log("comment!");
     view.updateComments(pdfManager.currentPage, event.data);
-}
-
-function onPublish() {
-    conn.post(currentSlides.generateJSONString(document.getElementById("slides-name").innerHTML));
 }
 
 function onAudioComment() {
@@ -65,6 +63,7 @@ function onVideoComment() {
 function onAudioUpload() {
     let comment = view.commentInput;
 
+    view.updateSlideString(currentSlides);
     audioUpload.click();
     currentSlides.addComment(pdfManager.currentPage, "audio", comment);
 }
@@ -82,6 +81,10 @@ function onVideoUpload() {
 
 function onVideoRecord() {
   //TO DO
+}
+
+function onPublish() {
+    conn.post(currentSlides.generateJSONString());
 }
 
 //init functions
@@ -111,8 +114,15 @@ function initSlides(pdfName, pdfPath, pdfComments) {
      comments = JSON.parse(pdfComments).comments;
     }
 
-    currentSlides = new Slide(pdfName, pdfPath, comments);
+    //init the current slide
+    currentSlides = new Slide(pdfName, pdfPath, []);
+    comments.forEach(comment => {
+        // eslint-disable-next-line no-underscore-dangle
+        currentSlides.addComment(comment._page, comment._type, comment._content);
+    });
     currentSlides.addEventListener("commentsChanged", onCommentsChanged);
+
+    console.log(currentSlides);
     view.updateNameDisplay(pdfName);
 }
 

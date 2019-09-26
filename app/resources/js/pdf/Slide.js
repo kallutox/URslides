@@ -11,7 +11,7 @@ class Slide extends Observable{
         super();
         this._name = name;
         this._comments = comments;
-        this.pdf = pdf;
+        this._pdf = pdf;
         this.idCount = 0;
 
         this.notifyAll(new Event("commentsChanged", this.comments));
@@ -42,21 +42,12 @@ class Slide extends Observable{
         this.notifyAll(new Event("commentsChanged", this.comments));
     }
 
-    generateJSONString(name) {
+    generateJSONString() {
         let literal = {
-            name: name,
-            pdfPath: this.pdf,
-            comments: [
-            ],
+            name: this._name,
+            pdfPath: this._pdf,
+            comments: this._comments,
         };
-
-        this._comments.forEach(comment => {
-            literal.comments.push({
-                id: comment.id,
-                page: comment.page,
-                content: comment.content,
-            });
-        });
 
         return JSON.stringify(literal);
     }
@@ -66,6 +57,14 @@ class Slide extends Observable{
      */
     set name(name) {
         this._name = name;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    get pdf() {
+        return this._pdf;
     }
 
     get comments(){
