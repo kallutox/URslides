@@ -1,9 +1,11 @@
 <% include partials/top %>
 
 <header>
-    <div id="slides-name"></div>
+    <div id="name-wrapper">
+        <div id="slides-name"></div>
+    </div>
     <p id="headline"><span class="themecolor">UR</span>slides</p>
-    <button id="head-btn" class="btn btn-danger">+</button>
+    <button id="head-upload-btn" class="btn btn-danger">+</button>
 </header>
 
 <div class="input-group flex-nowrap" id="search-page-input">
@@ -13,11 +15,11 @@
 
 <div id="results">
     <% slides.forEach(slide => { %>
-        <a href="/reader/<%= slide._id%>">
-            <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
-                <div class="result-name"><%= slide.name %></div>
-            </div>
-        </a>
+    <a href="/reader/<%= slide._id%>">
+        <div class="result-wrapper"><img src="/img/document_glyph.png" alt="">
+            <div class="result-name"><%= slide.name %></div>
+        </div>
+    </a>
     <% }); %>
 </div>
 

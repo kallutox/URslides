@@ -40,6 +40,12 @@ header {
     overflow: hidden;
 }
 
+#name-wrapper{
+    float: left;
+    width: 33.3%;
+    min-height: 1em;
+}
+
 #headline {
     float: left;
     width: 33.3%;
@@ -126,14 +132,14 @@ footer div {
 #back-btn {
     float: left;
     min-height: 1em;
-    width: 3%;
+    width: 5%;
     text-align: left;
 }
 
 #slides-name {
     float: left;
     min-height: 1em;
-    width: 30.3%;
+    width: 95%;
     text-align: left;
 }
 
@@ -288,6 +294,9 @@ footer div {
 }
 
 /*css for search.html*/
+#head-upload-btn {
+    float: right;
+}
 #search-page-input {
     width: 70%;
     margin: 1em auto;

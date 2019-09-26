@@ -1,8 +1,12 @@
 <% include partials/top %>
 
 <header>
-    <a href="/search"><p id="back-btn" class="themecolor hidden"><strong>&lt;</strong></p></a>
-    <p id="slides-name" contenteditable="true">MySlides</p><
+    <div id="name-wrapper">
+        <a href="/search">
+            <p id="back-btn" class="themecolor hidden"><strong>&lt;</strong></p>
+        </a>
+        <p id="slides-name" contenteditable="true">MySlides</p>
+    </div>
     <p id="headline"><span class="themecolor">UR</span>slides</p>
     <a href="/search"><button id="publish-btn" class="btn btn-danger">Publish slides</button></a>
 </header>
@@ -37,26 +41,28 @@
 
         <div id="add-comments-section">
 
-          <button id="audio-btn" class="btn btn-outline-danger border-edge-left-right">Add Audio Comment</button>
-          <button id="video-btn" class="btn btn-outline-danger border-edge-left-right">Add Video Comment</button>
+            <button id="audio-btn" class="btn btn-outline-danger border-edge-left-right">Add Audio Comment</button>
+            <button id="video-btn" class="btn btn-outline-danger border-edge-left-right">Add Video Comment</button>
 
-          <div id="audio-section" class= "hidden">
-            <form method="post">
-                <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload" class="hidden">
-                <button type="submit" id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
-                  Upload Audio</button>
-            </form>
-            <button id="audio-record-btn" class="btn btn-outline-danger border-edge-left-right">Record Audio</button>
-          </div>
+            <div id="audio-section" class="hidden">
+                <form method="post">
+                    <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload" class="hidden">
+                    <button type="submit" id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
+                        Upload Audio</button>
+                </form>
+                <button id="audio-record-btn" class="btn btn-outline-danger border-edge-left-right">Record
+                    Audio</button>
+            </div>
 
-          <div id="video-section" class="hidden">
-            <form method="post">
-                <input type="file" accept=".mp4,video/*" name="video-upload" id="video-upload" class="hidden">
-                <button type="submit" id="video-upload-btn" class="btn btn-outline-danger border-edge-left-right">
-                  Upload Video</button>
-            </form>
-            <button id="video-record-btn" class="btn btn-outline-danger border-edge-left-right">Record Video</button>
-          </div>
+            <div id="video-section" class="hidden">
+                <form method="post">
+                    <input type="file" accept=".mp4,video/*" name="video-upload" id="video-upload" class="hidden">
+                    <button type="submit" id="video-upload-btn" class="btn btn-outline-danger border-edge-left-right">
+                        Upload Video</button>
+                </form>
+                <button id="video-record-btn" class="btn btn-outline-danger border-edge-left-right">Record
+                    Video</button>
+            </div>
 
         </div>
 
