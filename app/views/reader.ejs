@@ -2,12 +2,13 @@
 
 <header>
     <a href="/search"><p id="back-btn" class="themecolor hidden"><strong>&lt;</strong></p></a>
-    <p id="slides-name">MySlides</p>
+    <p id="slides-name" contenteditable="true">MySlides</p><
     <p id="headline"><span class="themecolor">UR</span>slides</p>
     <a href="/search"><button id="publish-btn" class="btn btn-danger">Publish slides</button></a>
 </header>
 
 <div id="navline"></div>
+
 
 <div id="reader-wrapper">
     <div id="reader">
@@ -28,22 +29,49 @@
         </div>
         <canvas id="reader-canvas" width="200" height="400"></canvas>
     </div>
+
     <div id="comment-section-wrapper">
         <div id="comments-wrapper">
             <div id="comment-height-correction"></div>
         </div>
+
+        <div id="add-comments-section">
+
+          <button id="audio-btn" class="btn btn-outline-danger border-edge-left-right">Add Audio Comment</button>
+          <button id="video-btn" class="btn btn-outline-danger border-edge-left-right">Add Video Comment</button>
+
+          <div id="audio-section" class= "hidden">
+            <form method="post">
+                <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload" class="hidden">
+                <button type="submit" id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
+                  Upload Audio</button>
+            </form>
+            <button id="audio-record-btn" class="btn btn-outline-danger border-edge-left-right">Record Audio</button>
+          </div>
+
+          <div id="video-section" class="hidden">
+            <form method="post">
+                <input type="file" accept=".mp4,video/*" name="video-upload" id="video-upload" class="hidden">
+                <button type="submit" id="video-upload-btn" class="btn btn-outline-danger border-edge-left-right">
+                  Upload Video</button>
+            </form>
+            <button id="video-record-btn" class="btn btn-outline-danger border-edge-left-right">Record Video</button>
+          </div>
+
+        </div>
+
         <div id="input-area">
+
             <textarea class="form-control border-edge-right" id="comment-input"
                 placeholder="Write a comment..."></textarea>
             <button id="btn-send" class="btn btn-outline-danger border-edge-left">send</button>
+
         </div>
     </div>
 </div>
 
-<% include partials/footer %>
+<% include partials/top %>
 
 <!-- include pdf.js -->
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.min.js"></script>
 <script type="module" src="/js/indexReader.js"></script>
-
-<% include partials/bottom %>
