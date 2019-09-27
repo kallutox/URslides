@@ -24,7 +24,7 @@ function init() {
     
     //not good, place elsewhere
     audioUpload = document.getElementById("audio-upload");
-
+    audioUpload.addEventListener("input", onNewAudioSelected);
     view.addEventListener("newAudio", onNewAudio);
 
     initButtons();
@@ -48,6 +48,12 @@ function onTextComment() {
 }
 
 function onPageChanged(event) {
+    //clear audio arrays, so that index does not count on to infinity
+    audioPlayBtns = [];
+    audioPosSliders = [];
+    audioVolSliders = [];
+    audios = [];
+
     view.updatePageDisplay(event.data);
     view.updateComments(event.data.currentPage, currentSlides.comments);
 }
@@ -61,43 +67,38 @@ function onAudioComment() {
     view.showAudioSection(true);
 }
 
-function onNewAudio(event){
-    //assign all audio arrays anew
-    audioPlayBtns = document.getElementsByClassName("play-pause-btn");
-    audioPosSliders = document.getElementsByClassName("audio-pos");
-    audioVolSliders = document.getElementsByClassName("audio-vol");
-    audios.push(new Audio(event.data));
-
-    //add listeners to every element
-    for(let i = 0; i < audioPlayBtns.length; i++) {
-        audioPlayBtns[i].addEventListener("click", onPlayPause.bind(this, i));
-    }
-
-    for(let i = 0; i < audioPosSliders.length; i++) {
-        audioPosSliders[i].addEventListener("input", onPosInput.bind(this, i));
-    }
-
-    for(let i = 0; i < audioVolSliders.length; i++) {
-        audioVolSliders[i].addEventListener("input", onVolInput.bind(this, i));
-    }
-
-    for(let i = 0; i < audios.length; i++) {
-        audios[i].addEventListener("ended", onAudioEnd.bind(this, i));
-        audios[i].addEventListener("timeupdate", onAudioTimeChanged.bind(this, i));
-    }
-}
-
-function onVideoComment() {
-    view.showVideoButton(false);
-    view.showVideoSection(true);
-}
-
 function onAudioUpload() {
     let comment = view.commentInput;
 
     view.updateSlideString(currentSlides);
     audioUpload.click();
     currentSlides.addComment(pdfManager.currentPage, "audio", comment);
+}
+
+function onNewAudioSelected() {
+    document.getElementById("audio-confirm-btn").click();
+}
+
+function onNewAudio(event){
+    //assign all audio arrays anew
+    var index = audioPlayBtns.length;
+
+    audioPlayBtns.push(document.getElementsByClassName("play-pause-btn")[index]);
+    audioPosSliders = document.getElementsByClassName("audio-pos");
+    audioVolSliders = document.getElementsByClassName("audio-vol");
+    audios.push(new Audio(event.data));  
+
+    //add all listeners to new elements
+    audioPlayBtns[index].addEventListener("click", onPlayPause.bind(this, index));
+    audioPosSliders[index].addEventListener("input", onPosInput.bind(this, index));
+    audioVolSliders[index].addEventListener("input", onVolInput.bind(this, index));
+    audios[index].addEventListener("ended", onAudioEnd.bind(this, index));
+    audios[index].addEventListener("timeupdate", onAudioTimeChanged.bind(this, index));
+}
+
+function onVideoComment() {
+    view.showVideoButton(false);
+    view.showVideoSection(true);
 }
 
 function onAudioRecord() {
@@ -121,7 +122,7 @@ function onPublish() {
 
 //event handler for audio player
 function onPlayPause(i) {
-    console.log(i);
+    console.log(i + ", " + audios[i].paused);
     if(audios[i].paused) {
         audios[i].play();
         audioPlayBtns[i].src = "img/pause_glyph.png";

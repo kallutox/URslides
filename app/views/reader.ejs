@@ -60,12 +60,12 @@
                 <div id="audio-section" class="hidden">
                     <button id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
                         Upload Audio</button>
-                    <button id="audio-record-btn" class="btn btn-outline-danger hidden">Record Audio</button>
+                    <button id="audio-record-btn" class="btn btn-outline-danger">Record Audio</button>
 
                     <form action="/audioupload" enctype="multipart/form-data" method="post">
                         <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload" class="hidden">
                         <input type="text" name="slide" id="slide-string" class="hidden">
-                        <button type="submit" id="audio-confirm-btn"></button>
+                        <button type="submit" id="audio-confirm-btn" class="hidden"></button>
                     </form>
                 </div>
 
