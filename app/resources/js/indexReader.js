@@ -9,7 +9,11 @@ var pdfManager = new PDFManager(),
     conn = new Connection(),
     currentSlides,
     audioUpload,
-    videoUpload;
+    videoUpload,
+    audioPlayBtns = [],
+    audioPosSliders = [],
+    audioVolSliders = [],
+    audios = [];
 
 function init() {
     var pdfPath = document.getElementById("pdf-path").innerText.trim(),
@@ -20,6 +24,8 @@ function init() {
     
     //not good, place elsewhere
     audioUpload = document.getElementById("audio-upload");
+
+    view.addEventListener("newAudio", onNewAudio);
 
     initButtons();
     intiPDF(pdfPath);
@@ -55,6 +61,32 @@ function onAudioComment() {
     view.showAudioSection(true);
 }
 
+function onNewAudio(event){
+    //assign all audio arrays anew
+    audioPlayBtns = document.getElementsByClassName("play-pause-btn");
+    audioPosSliders = document.getElementsByClassName("audio-pos");
+    audioVolSliders = document.getElementsByClassName("audio-vol");
+    audios.push(new Audio(event.data));
+
+    //add listeners to every element
+    for(let i = 0; i < audioPlayBtns.length; i++) {
+        audioPlayBtns[i].addEventListener("click", onPlayPause.bind(this, i));
+    }
+
+    for(let i = 0; i < audioPosSliders.length; i++) {
+        audioPosSliders[i].addEventListener("input", onPosInput.bind(this, i));
+    }
+
+    for(let i = 0; i < audioVolSliders.length; i++) {
+        audioVolSliders[i].addEventListener("input", onVolInput.bind(this, i));
+    }
+
+    for(let i = 0; i < audios.length; i++) {
+        audios[i].addEventListener("ended", onAudioEnd.bind(this, i));
+        audios[i].addEventListener("timeupdate", onAudioTimeChanged.bind(this, i));
+    }
+}
+
 function onVideoComment() {
     view.showVideoButton(false);
     view.showVideoSection(true);
@@ -87,9 +119,38 @@ function onPublish() {
     conn.post(currentSlides.generateJSONString());
 }
 
+//event handler for audio player
+function onPlayPause(i) {
+    console.log(i);
+    if(audios[i].paused) {
+        audios[i].play();
+        audioPlayBtns[i].src = "img/pause_glyph.png";
+    } else {
+        audios[i].pause();
+        audioPlayBtns[i].src = "img/play_glyph.png";
+    }
+}
+
+function onPosInput(i) {
+    audios[i].currentTime = audioPosSliders[i].value/100 * audios[i].duration;
+}
+
+function onVolInput(i) {
+    audios[i].volume = audioVolSliders[i].value/100;
+}
+
+function onAudioEnd(i) {
+    audioPlayBtns[i].src = "img/play_glyph.png";
+    audioPosSliders[i].value = 0;
+}
+
+function onAudioTimeChanged(i) {
+    audioPosSliders[i].value = audios[i].currentTime/audios[i].duration * 100;
+}
+
 //init functions
 function initButtons() {
-    //init all Buttons needed in the index module
+    //init all Buttons needed in the index module and also all listeners
     document.getElementById("btn-previous").addEventListener("click", onShowPrevious);
     document.getElementById("btn-next").addEventListener("click", onShowNext);
     document.getElementById("btn-send").addEventListener("click", onTextComment);

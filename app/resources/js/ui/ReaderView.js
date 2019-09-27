@@ -1,8 +1,11 @@
 /* eslint-env browser */
+import Observable, { Event } from "../utility/Observable.js";
 
-class ReaderView {
+class ReaderView extends Observable{
 
   constructor() {
+    super();
+
     this.backButton = document.getElementById("back-btn");
     this.slidesName = document.getElementById("slides-name");
     this.publishButton = document.getElementById("publish-btn");
@@ -19,6 +22,7 @@ class ReaderView {
 
     this.slidesName = document.getElementById("slides-name");
     this.slidesString = document.getElementById("slide-string");
+    this.audioExample = document.getElementsByClassName("audio-example")[0];
   }
 
   updateNameDisplay(name) {
@@ -62,12 +66,12 @@ class ReaderView {
           }
           //here the html for audio comments is generated and added to the reader.ejs
           case "audio": {
-            let newEl = document.createElement("div"),
-              cNode = document.createTextNode(comment.content);
+            let newEl = this.audioExample.cloneNode(true);
 
-            newEl.appendChild(cNode);
-            newEl.classList.add("audio-comment");
+            newEl.classList.remove("audio-example");
+            newEl.classList.remove("hidden");
             this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
+            this.notifyAll(new Event("newAudio", comment.content));
             break;
           }
           case "video": {

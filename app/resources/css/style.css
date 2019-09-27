@@ -278,14 +278,6 @@ footer div {
     height: 50%;
 }
 
-#audio-upload-btn {
-    display: inline-block;
-}
-
-#audio-record-btn {
-    display: inline-block;
-}
-
 #add-comments-section {
   width: 20%;
   height: 100%;

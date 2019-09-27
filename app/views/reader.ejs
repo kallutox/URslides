@@ -40,6 +40,13 @@
     <div id="comment-section-wrapper">
         <div id="comments-wrapper">
             <div id="comment-height-correction"></div>
+            <div class="audio-comment audio-example hidden"> 
+                <img src="img/play_glyph.png" width="30" height="30" alt="play pause" class="play-pause-btn"/>
+                <input type="range" min="0" max="100" value="0" class="slider audio-pos">
+                <!-- speaker img downloaded from https://www.flaticon.com/free-icon/speaker-filled-audio-tool_59284 -->
+                <img src="img/speaker.png" width="20" height="20"/>
+                <input type="range" min="0" max="100" value="100" class="slider audio-vol">
+            </div>
         </div>
 
         <div id="input-area">
@@ -53,7 +60,7 @@
                 <div id="audio-section" class="hidden">
                     <button id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
                         Upload Audio</button>
-                    <button id="audio-record-btn" class="btn btn-outline-danger">Record Audio</button>
+                    <button id="audio-record-btn" class="btn btn-outline-danger hidden">Record Audio</button>
 
                     <form action="/audioupload" enctype="multipart/form-data" method="post">
                         <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload" class="hidden">
