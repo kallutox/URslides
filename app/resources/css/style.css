@@ -233,9 +233,58 @@ footer div {
 
 #input-area {
     width: 100%;
-    height: 25%;
+    height: 35%;
     position: absolute;
     bottom: 0;
+}
+
+.show-record {
+    width: 90%;
+    height: 22%;
+    margin: 0 auto;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    background: #ccc;
+    border: 2px solid #ff2453;
+    border-bottom: none;
+}
+
+#recording-section {
+    width: 90%;
+    height: 22%;
+    margin: 0 auto;
+}
+
+#recording-items-wrapper {
+    overflow: hidden;
+}
+
+#recording-section .btn {
+    float: right;
+    width: 25%;
+    height: 80%;
+    margin-top: 0.45vh;
+    margin-right: 0.5vw;
+}
+
+#time-display {
+    width: 10%;
+    float: left;
+    margin-top: 1.5vh;
+    margin-left: 2%;
+    margin-bottom: 0;
+}
+
+.close {
+    float: right;
+    margin-right: 0.5vw;
+}
+
+#main-menu {
+    width: 100%;
+    height: 78%;
+    border-radius: .5rem;
+    background: #ff2453;
 }
 
 #comment-input {

@@ -1,192 +1,204 @@
 /* eslint-env browser */
 import Observable, { Event } from "../utility/Observable.js";
 
-class ReaderView extends Observable{
+class ReaderView extends Observable {
 
-  constructor() {
-    super();
+    constructor() {
+        super();
 
-    this.backButton = document.getElementById("back-btn");
-    this.slidesName = document.getElementById("slides-name");
-    this.publishButton = document.getElementById("publish-btn");
-    this.commentWrapper = document.getElementById("comments-wrapper");
-    this.commentInputArea = document.getElementById("input-area");
-    this.commentTextArea = document.getElementById("comment-input");
-    this.heightCorrectionEl = document.getElementById("comment-height-correction");
-    this.pageDisplay = document.getElementById("page-num");
+        this.backButton = document.getElementById("back-btn");
+        this.slidesName = document.getElementById("slides-name");
+        this.publishButton = document.getElementById("publish-btn");
+        this.commentWrapper = document.getElementById("comments-wrapper");
+        this.commentInputArea = document.getElementById("input-area");
+        this.commentTextArea = document.getElementById("comment-input");
+        this.heightCorrectionEl = document.getElementById("comment-height-correction");
+        this.pageDisplay = document.getElementById("page-num");
 
-    this.videoButton = document.getElementById("video-btn");
-    this.audioButton = document.getElementById("audio-btn");
-    this.videoSection = document.getElementById("video-section");
-    this.audioSection = document.getElementById("audio-section");
+        this.videoButton = document.getElementById("video-btn");
+        this.audioButton = document.getElementById("audio-btn");
+        this.videoSection = document.getElementById("video-section");
+        this.audioSection = document.getElementById("audio-section");
+        this.recordAudioItems = document.getElementById("recording-items-wrapper");
+        this.recordAudioMenu = document.getElementById("recording-section");
 
-    this.slidesName = document.getElementById("slides-name");
-    this.slidesString = document.getElementById("slide-string");
-    this.audioExample = document.getElementsByClassName("audio-example")[0];
-  }
-
-  updateNameDisplay(name) {
-    this.slidesName.innerText = name + "  🖉";
-  }
-
-  deleteEditSign() {
-    this.slidesName.innerText = this.slidesName.innerText.substring(0, this.slidesName.innerText.length - 2);
-  }
-
-  updatePageDisplay(pageValues) {
-    this.pageDisplay.innerText = pageValues.currentPage + "/" + pageValues.totalPages;
-  }
-
-  addTextComment() {
-    var newEl = document.createElement("p"),
-      comment = this.commentInput,
-      cNode = document.createTextNode(comment);
-    if (comment !== "") {
-      newEl.appendChild(cNode);
-      newEl.classList.add("text-comment");
-      this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
-      this.commentTextArea.value = "";
+        this.slidesName = document.getElementById("slides-name");
+        this.slidesString = document.getElementById("slide-string");
+        this.audioExample = document.getElementsByClassName("audio-example")[0];
     }
-  }
 
-  updateComments(page, comments) {
-    clearComments(this.commentWrapper, this.heightCorrectionEl);
-    comments.forEach(comment => {
-      if (comment.page === page) {
-        switch (comment.type) {
-          case "text": {
-            //here the html for text comments is generated and added to the reader.ejs
-            let newEl = document.createElement("p"),
-              cNode = document.createTextNode(comment.content);
+    updateNameDisplay(name) {
+        this.slidesName.innerText = name + "  🖉";
+    }
 
+    deleteEditSign() {
+        this.slidesName.innerText = this.slidesName.innerText.substring(0, this.slidesName.innerText.length - 2);
+    }
+
+    updatePageDisplay(pageValues) {
+        this.pageDisplay.innerText = pageValues.currentPage + "/" + pageValues.totalPages;
+    }
+
+    addTextComment() {
+        var newEl = document.createElement("p"),
+            comment = this.commentInput,
+            cNode = document.createTextNode(comment);
+        if (comment !== "") {
             newEl.appendChild(cNode);
             newEl.classList.add("text-comment");
             this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
-            break;
-          }
-          //here the html for audio comments is generated and added to the reader.ejs
-          case "audio": {
-            let newEl = this.audioExample.cloneNode(true);
-
-            newEl.classList.remove("audio-example");
-            newEl.classList.remove("hidden");
-            this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
-            this.notifyAll(new Event("newAudio", comment.content));
-            break;
-          }
-          case "video": {
-            //add code that is used to generate the video comments
-            break;
-          }
-          default: {
-            console.log("Requested comment " + comment.type + " type is not available!");
-            break;
-          }
-      }
+            this.commentTextArea.value = "";
+        }
     }
-    });
-}
 
-uploadAudioComment() {
-  //TODO
-}
+    updateComments(page, comments) {
+        clearComments(this.commentWrapper, this.heightCorrectionEl);
+        comments.forEach(comment => {
+            if (comment.page === page) {
+                switch (comment.type) {
+                    case "text": {
+                        //here the html for text comments is generated and added to the reader.ejs
+                        let newEl = document.createElement("p"),
+                            cNode = document.createTextNode(comment.content);
 
-recordAudioComment() {
-  //TODO
-}
-uploadVideoComment() {
-  //TODO
-}
+                        newEl.appendChild(cNode);
+                        newEl.classList.add("text-comment");
+                        this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
+                        break;
+                    }
+                    //here the html for audio comments is generated and added to the reader.ejs
+                    case "audio": {
+                        let newEl = this.audioExample.cloneNode(true);
 
-recordVideoComment() {
-  //TODO
-}
+                        newEl.classList.remove("audio-example");
+                        newEl.classList.remove("hidden");
+                        this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
+                        this.notifyAll(new Event("newAudio", comment.content));
+                        break;
+                    }
+                    case "video": {
+                        //add code that is used to generate the video comments
+                        break;
+                    }
+                    default: {
+                        console.log("Requested comment " + comment.type + " type is not available!");
+                        break;
+                    }
+                }
+            }
+        });
+    }
 
-showCommentInputArea(isShown) {
-  if (isShown) {
-    this.commentInputArea.classList.remove("hidden");
-  } else {
-    this.commentInputArea.classList.add("hidden");
-  }
-}
+    uploadAudioComment() {
+        //TODO
+    }
 
-showPublishButton(isShown) {
-  if (isShown) {
-    this.publishButton.classList.remove("hidden");
-  } else {
-    this.publishButton.classList.add("hidden");
-  }
-}
+    recordAudioComment() {
+        //TODO
+    }
+    uploadVideoComment() {
+        //TODO
+    }
 
-showBackButton(isShown) {
-  if (isShown) {
-    this.backButton.classList.remove("hidden");
-  } else {
-    this.backButton.classList.add("hidden");
-  }
-}
+    recordVideoComment() {
+        //TODO
+    }
 
-showAudioButton(isShown) {
-  if (isShown) {
-    this.audioButton.classList.remove("hidden");
-  } else {
-    this.audioButton.classList.add("hidden");
-  }
-}
+    showCommentInputArea(isShown) {
+        if (isShown) {
+            this.commentInputArea.classList.remove("hidden");
+        } else {
+            this.commentInputArea.classList.add("hidden");
+        }
+    }
 
-showVideoButton(isShown) {
-  if (isShown) {
-    this.videoButton.classList.remove("hidden");
-  } else {
-    this.videoButton.classList.add("hidden");
-  }
-}
+    showPublishButton(isShown) {
+        if (isShown) {
+            this.publishButton.classList.remove("hidden");
+        } else {
+            this.publishButton.classList.add("hidden");
+        }
+    }
 
-showAudioSection(isShown) {
-  if (isShown) {
-    this.audioSection.classList.remove("hidden");
-  } else {
-    this.audioSection.classList.add("hidden");
-  }
-}
+    showBackButton(isShown) {
+        if (isShown) {
+            this.backButton.classList.remove("hidden");
+        } else {
+            this.backButton.classList.add("hidden");
+        }
+    }
 
-showVideoSection(isShown) {
-  if (isShown) {
-    this.videoSection.classList.remove("hidden");
-  } else {
-    this.videoSection.classList.add("hidden");
-  }
-}
+    showAudioButton(isShown) {
+        if (isShown) {
+            this.audioButton.classList.remove("hidden");
+        } else {
+            this.audioButton.classList.add("hidden");
+        }
+    }
 
-editSlidesName(editable) {
-  if (editable) {
-    this.slidesName.contentEditable = "true";
-  } else {
-    this.slidesName.contentEditable = "false";
-  }
-}
+    showVideoButton(isShown) {
+        if (isShown) {
+            this.videoButton.classList.remove("hidden");
+        } else {
+            this.videoButton.classList.add("hidden");
+        }
+    }
 
-updateSlideString(slide) {
-  this.slidesString.value = JSON.stringify({
-    name: slide.name,
-    pdf: slide.pdf,
-    comments: slide.comments,
-    idCount: slide.idCount,
-  });
-}
+    showAudioSection(isShown) {
+        if (isShown) {
+            this.audioSection.classList.remove("hidden");
+        } else {
+            this.audioSection.classList.add("hidden");
+        }
+    }
 
-get commentInput() {
-  let value = this.commentTextArea.value;
+    showVideoSection(isShown) {
+        if (isShown) {
+            this.videoSection.classList.remove("hidden");
+        } else {
+            this.videoSection.classList.add("hidden");
+        }
+    }
 
-  this.commentTextArea.value = "";
-  return value;
-}
+    showRecordAudioMenu(isShown) {
+        if (isShown) {
+            this.recordAudioItems.classList.remove("hidden");
+            this.recordAudioMenu.classList.add("show-record");
+        } else {
+            this.recordAudioItems.classList.add("hidden");
+            this.recordAudioMenu.classList.remove("show-record");
+        }
+    }
+
+    editSlidesName(editable) {
+        if (editable) {
+            this.slidesName.contentEditable = "true";
+        } else {
+            this.slidesName.contentEditable = "false";
+        }
+    }
+
+    updateSlideString(slide) {
+        this.slidesString.value = JSON.stringify({
+            name: slide.name,
+            pdf: slide.pdf,
+            comments: slide.comments,
+            idCount: slide.idCount,
+        });
+    }
+
+    get commentInput() {
+        let value = this.commentTextArea.value;
+
+        this.commentTextArea.value = "";
+        return value;
+    }
 
 }
 
 function clearComments(wrapper, correction) {
-  wrapper.innerText = "";
-  wrapper.appendChild(correction);
+    wrapper.innerText = "";
+    wrapper.appendChild(correction);
 }
 
 export default ReaderView;

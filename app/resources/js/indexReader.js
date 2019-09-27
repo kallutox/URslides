@@ -1,7 +1,7 @@
 /* eslint-env browser */
-import PDFManager from "../js/pdf/PDFManager.js";
+import PDFManager from "../js/data/PDFManager.js";
 import ReaderView from "../js/ui/ReaderView.js";
-import Slide from "../js/pdf/Slide.js";
+import Slide from "../js/data/Slide.js";
 import Connection from "../js/utility/Connection.js";
 
 var pdfManager = new PDFManager(),
@@ -21,7 +21,7 @@ function init() {
         pdfComments = document.getElementById("pdf-comments").innerText,
         pdfEdit = document.getElementById("pdf-edit").innerText.trim(),
         pdfIDCount = document.getElementById("pdf-idcount").innerText.trim();
-    
+
     //not good, place elsewhere
     audioUpload = document.getElementById("audio-upload");
     audioUpload.addEventListener("input", onNewAudioSelected);
@@ -79,14 +79,14 @@ function onNewAudioSelected() {
     document.getElementById("audio-confirm-btn").click();
 }
 
-function onNewAudio(event){
+function onNewAudio(event) {
     //assign all audio arrays anew
     var index = audioPlayBtns.length;
 
     audioPlayBtns.push(document.getElementsByClassName("play-pause-btn")[index]);
     audioPosSliders = document.getElementsByClassName("audio-pos");
     audioVolSliders = document.getElementsByClassName("audio-vol");
-    audios.push(new Audio(event.data));  
+    audios.push(new Audio(event.data));
 
     //add all listeners to new elements
     audioPlayBtns[index].addEventListener("click", onPlayPause.bind(this, index));
@@ -96,13 +96,17 @@ function onNewAudio(event){
     audios[index].addEventListener("timeupdate", onAudioTimeChanged.bind(this, index));
 }
 
+function onOpenRecordAudio() {
+    view.showRecordAudioMenu(true);
+}
+
+function onCloseRecordAudio() {
+    view.showRecordAudioMenu(false);
+}
+
 function onVideoComment() {
     view.showVideoButton(false);
     view.showVideoSection(true);
-}
-
-function onAudioRecord() {
-  //TO DO
 }
 
 function onVideoUpload() {
@@ -113,7 +117,7 @@ function onVideoUpload() {
 }
 
 function onVideoRecord() {
-  //TO DO
+    //TO DO
 }
 
 function onPublish() {
@@ -122,8 +126,7 @@ function onPublish() {
 
 //event handler for audio player
 function onPlayPause(i) {
-    console.log(i + ", " + audios[i].paused);
-    if(audios[i].paused) {
+    if (audios[i].paused) {
         audios[i].play();
         audioPlayBtns[i].src = "img/pause_glyph.png";
     } else {
@@ -133,11 +136,11 @@ function onPlayPause(i) {
 }
 
 function onPosInput(i) {
-    audios[i].currentTime = audioPosSliders[i].value/100 * audios[i].duration;
+    audios[i].currentTime = audioPosSliders[i].value / 100 * audios[i].duration;
 }
 
 function onVolInput(i) {
-    audios[i].volume = audioVolSliders[i].value/100;
+    audios[i].volume = audioVolSliders[i].value / 100;
 }
 
 function onAudioEnd(i) {
@@ -146,7 +149,7 @@ function onAudioEnd(i) {
 }
 
 function onAudioTimeChanged(i) {
-    audioPosSliders[i].value = audios[i].currentTime/audios[i].duration * 100;
+    audioPosSliders[i].value = audios[i].currentTime / audios[i].duration * 100;
 }
 
 //init functions
@@ -159,12 +162,13 @@ function initButtons() {
     document.getElementById("audio-btn").addEventListener("click", onAudioComment);
     document.getElementById("video-btn").addEventListener("click", onVideoComment);
     document.getElementById("audio-upload-btn").addEventListener("click", onAudioUpload);
-    document.getElementById("audio-record-btn").addEventListener("click", onAudioRecord);
+    document.getElementById("audio-record-btn").addEventListener("click", onOpenRecordAudio);
+    document.getElementById("close-recording-section").addEventListener("click", onCloseRecordAudio)
     document.getElementById("video-upload-btn").addEventListener("click", onVideoUpload);
     document.getElementById("video-record-btn").addEventListener("click", onVideoRecord);
 }
 
-function intiPDF(pdfPath){
+function intiPDF(pdfPath) {
     pdfManager.addEventListener("pageChanged", onPageChanged);
     pdfManager.renderPDF(pdfPath);
 }
@@ -174,12 +178,12 @@ function initSlides(pdfName, pdfPath, pdfComments, pdfIDCount) {
         idCount = 0;
 
     //test if there are comments given
-    if(pdfComments.trim() !== ""){
+    if (pdfComments.trim() !== "") {
         comments = JSON.parse(pdfComments).comments;
     }
 
     //test if an idCount is already given
-    if(pdfIDCount !== ""){
+    if (pdfIDCount !== "") {
         idCount = pdfIDCount;
     }
 
@@ -196,7 +200,7 @@ function initSlides(pdfName, pdfPath, pdfComments, pdfIDCount) {
 }
 
 function adjustUI(edit) {
-    if(edit !== "true") {
+    if (edit !== "true") {
         view.showPublishButton(false);
         view.showCommentInputArea(false);
         view.showBackButton(true);

@@ -40,45 +40,59 @@
     <div id="comment-section-wrapper">
         <div id="comments-wrapper">
             <div id="comment-height-correction"></div>
-            <div class="audio-comment audio-example hidden"> 
-                <img src="img/play_glyph.png" width="30" height="30" alt="play pause" class="play-pause-btn"/>
+            <div class="audio-comment audio-example hidden">
+                <img src="img/play_glyph.png" width="30" height="30" alt="play pause" class="play-pause-btn" />
                 <input type="range" min="0" max="100" value="0" class="slider audio-pos">
                 <!-- speaker img downloaded from https://www.flaticon.com/free-icon/speaker-filled-audio-tool_59284 -->
-                <img src="img/speaker.png" width="20" height="20"/>
+                <img src="img/speaker.png" width="20" height="20" />
                 <input type="range" min="0" max="100" value="100" class="slider audio-vol">
             </div>
         </div>
 
         <div id="input-area">
-            <textarea class="form-control border-edge-right" id="comment-input"
-                placeholder="Write a comment..."></textarea>
-            <button id="btn-send" class="btn btn-outline-danger border-edge-left">send</button>
-
-            <div id="add-comments-section">
-                <button id="audio-btn" class="btn btn-outline-danger">Add Audio Comment</button>
-
-                <div id="audio-section" class="hidden">
-                    <button id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
-                        Upload Audio</button>
-                    <button id="audio-record-btn" class="btn btn-outline-danger">Record Audio</button>
-
-                    <form action="/audioupload" enctype="multipart/form-data" method="post">
-                        <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload" class="hidden">
-                        <input type="text" name="slide" id="slide-string" class="hidden">
-                        <button type="submit" id="audio-confirm-btn" class="hidden"></button>
-                    </form>
+            <div id="recording-section">
+                <div id="recording-items-wrapper" class="hidden">
+                    <p id="time-display">0s</p>
+                    <p id="close-recording-section" class="close"><strong>x</strong></p>
+                    <button id="record" class="btn btn-outline-danger">Record</button>
+                    <button id="pause-record" class="btn btn-outline-danger">Pause</button>
+                    <button id="stop-record" class="btn btn-outline-danger">Stop</button>
                 </div>
+            </div>
 
-                <button id="video-btn" class="btn btn-outline-danger border-edge-left-right">Add Video Comment</button>
-                <div id="video-section" class="hidden">
-                    <form method="post">
-                        <input type="file" accept=".mp4,video/*" name="video-upload" id="video-upload" class="">
-                        <button type="submit" id="video-upload-btn"
-                            class="btn btn-outline-danger border-edge-left-right">
-                            Upload Video</button>
-                    </form>
-                    <button id="video-record-btn" class="btn btn-outline-danger border-edge-left-right">Record
-                        Video</button>
+            <div id="main-menu">
+                <textarea class="form-control border-edge-right" id="comment-input"
+                    placeholder="Write a comment..."></textarea>
+                <button id="btn-send" class="btn btn-outline-danger border-edge-left">send</button>
+
+                <div id="add-comments-section">
+                    <button id="audio-btn" class="btn btn-outline-danger">Add Audio Comment</button>
+
+                    <div id="audio-section" class="hidden">
+                        <button id="audio-upload-btn" class="btn btn-outline-danger border-edge-left-right">
+                            Upload Audio</button>
+                        <button id="audio-record-btn" class="btn btn-outline-danger">Record Audio</button>
+
+                        <form action="/audioupload" enctype="multipart/form-data" method="post">
+                            <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload"
+                                class="hidden">
+                            <input type="text" name="slide" id="slide-string" class="hidden">
+                            <button type="submit" id="audio-confirm-btn" class="hidden"></button>
+                        </form>
+                    </div>
+
+                    <button id="video-btn" class="btn btn-outline-danger border-edge-left-right">Add Video
+                        Comment</button>
+                    <div id="video-section" class="hidden">
+                        <form method="post">
+                            <input type="file" accept=".mp4,video/*" name="video-upload" id="video-upload" class="">
+                            <button type="submit" id="video-upload-btn"
+                                class="btn btn-outline-danger border-edge-left-right">
+                                Upload Video</button>
+                        </form>
+                        <button id="video-record-btn" class="btn btn-outline-danger border-edge-left-right">Record
+                            Video</button>
+                    </div>
                 </div>
             </div>
         </div>
