@@ -76,6 +76,7 @@
                         <form action="/audioupload" enctype="multipart/form-data" method="post">
                             <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload"
                                 class="hidden">
+                                <audio src="/audio/e.mp3"></audio>
                             <input type="text" name="slide" id="slide-string" class="hidden">
                             <button type="submit" id="audio-confirm-btn" class="hidden"></button>
                         </form>
@@ -103,4 +104,5 @@
 
 <!-- include pdf.js -->
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.min.js"></script>
+<script src="/js/libs/web-audio-recorder-js/WebAudioRecorder.min.js"></script>
 <script type="module" src="/js/indexReader.js"></script>
