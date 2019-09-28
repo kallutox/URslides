@@ -18,6 +18,8 @@ class ReaderView{
         this.audioSection = document.getElementById("audio-section");
         this.recordAudioItems = document.getElementById("recording-items-wrapper");
         this.recordAudioMenu = document.getElementById("recording-section");
+        this.recordButton = document.getElementById("record");
+        this.stopRecordButton = document.getElementById("stop-record");
 
         this.slidesName = document.getElementById("slides-name");
         this.slidesString = document.getElementById("slide-string");
@@ -168,6 +170,22 @@ class ReaderView{
         } else {
             this.recordAudioItems.classList.add("hidden");
             this.recordAudioMenu.classList.remove("show-record");
+        }
+    }
+
+    enableRecordButton(isEnabled) {
+        if (isEnabled) {
+            this.recordButton.disabled = false;
+        } else {
+            this.recordButton.disabled = true;
+        }
+    }
+
+    enableStopRecordButton(isEnabled) {
+        if (isEnabled) {
+            this.stopRecordButton.disabled = false;
+        } else {
+            this.stopRecordButton.disabled = true;
         }
     }
 

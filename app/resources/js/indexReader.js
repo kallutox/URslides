@@ -86,7 +86,7 @@ function onNewAudioSelected() {
 
         let formData = new FormData(audioForm);
 
-        formData.append("slide", currentSlides.generateJSONString());
+        formData.append("slide", currentSlides.generateJSONStringPage(pdfManager.currentPage));
 
         let response = await fetch("/audioupload", {
             method: 'POST',
@@ -113,11 +113,18 @@ function onOpenRecordAudio() {
         console.log("here");
         audioRecorder = new AudioRecorder;
         audioRecorder.addEventListener("newAudioAvailable", onNewAudioAvailable);
+        audioRecorder.addEventListener("recordingStarted", onRecordingStarted);
     }
 }
 
 function onStartRecording() {
     audioRecorder.startRecording();
+}
+
+function onRecordingStarted() {
+    //disable recording button, so that user can't start a new record while there is already one running
+    view.enableRecordButton(false);
+    view.enableStopRecordButton(true);
 }
 
 function onStopRecording() {
@@ -133,7 +140,7 @@ function onNewAudioAvailable(event) {
         let formData = new FormData(audioForm);
 
         formData.append("audio-upload", event.data, currentSlides.name + (currentSlides.idCount + 1)+ "01.mp3");
-        formData.append("slide", currentSlides.generateJSONString());
+        formData.append("slide", currentSlides.generateJSONStringPage(pdfManager.currentPage));
 
         let response = await fetch("/audioupload", {
             method: 'POST',
@@ -149,6 +156,10 @@ function onNewAudioAvailable(event) {
             });
         });
     };
+
+    //reenable recording button, because process of pushing the current one is now done
+    view.enableRecordButton(true);
+    view.enableStopRecordButton(false);
 
     document.getElementById("record-confirm-btn").click();
 }

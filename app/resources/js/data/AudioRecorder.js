@@ -33,8 +33,9 @@ class AudioRecorder extends Observable {
 
             recorder.setOptions(AudioSettings.recordingSettings);
 
-            recorder.startRecording();
+            //send an Event, so that the buttons in the recording menu can be adjusted
             self.notifyAll(new Event("recordingStarted"));
+            recorder.startRecording();
         }).catch(function (err) {
             console.log(err);
         });

@@ -48,11 +48,23 @@ class Slide extends Observable{
 
     //generates a JSON-String from a Object, that is representive for this slide, this is important for data transfer between the client and the server side
     generateJSONString() {
-        let literal = {
+        var literal = {
             name: this._name,
             pdf: this._pdf,
             comments: this._comments,
             idCount: this._idCount,
+        };
+
+        return JSON.stringify(literal);
+    }
+
+    generateJSONStringPage(page){
+        var literal = {
+            name: this._name,
+            pdf: this._pdf,
+            comments: this._comments,
+            idCount: this._idCount,
+            page: page,
         };
 
         return JSON.stringify(literal);
