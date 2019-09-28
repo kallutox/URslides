@@ -88,15 +88,32 @@ class ReaderView extends Observable{
                     //here the html for audio comments is generated and added to the reader.ejs
                     case "audio": {
                         let wrapper = document.createElement("div"),
+                            editButton = document.createElement("button"),
+                            deleteButton = document.createElement("button"),
+                            toolbar = document.createElement("div"),
                             audio = document.createElement("audio");
 
+                        //edit settings for audio node
                         audio.controls = true;
                         audio.src = comment.content;
+                        audio.classList.add("comment-content");
 
-                        wrapper.classList.add("audio-comment");
+                        //edit button also needed, for correct calculation of the button indices
+                        editButton.classList.add("comment-edit-btn");
+                        editButton.classList.add("hidden");
+                        deleteButton.innerText = "🗑";
+                        deleteButton.classList.add("comment-delete-btn");
+
+                        toolbar.appendChild(deleteButton);
+                        toolbar.appendChild(editButton);
+                        toolbar.classList.add("toolbar");
+
+                        wrapper.appendChild(toolbar);
                         wrapper.appendChild(audio);
+                        wrapper.classList.add("audio-comment");
 
                         this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
+                        this.notifyAll(new Event("newAudioComment", comment.id));
                         break;
                     }
                     case "video": {

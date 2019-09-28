@@ -225,27 +225,35 @@ footer div {
     border: 2px solid #ff2453;
     border-radius: .5rem;
     border-top-left-radius: 0;
-    padding: 1.7vh;
 }
 
-.comment-content {
+.text-comment .comment-content {
+    padding: 1.7vh;
     word-wrap: break-word;
 }
 
-.text-comment .toolbar {
-    width: inherit;
+.toolbar {
+    width: 100%;
     height: 0;
-    padding-right: 4vh;
-    position: absolute;
-    display: none;
+    padding-top: 1vh;
+    padding-right: 1vh;
 }
 
-.text-comment .toolbar button {
+.toolbar button {
+    width: 2em;
+    height: 2em;
     float: right;
+    padding-top: 0.2em;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    color: #ff2453;
+    font-weight: bolder;
 }
 
-.text-comment:hover .toolbar {
-    display: inline;
+.toolbar button:hover {
+    background: #ff2453;
+    color: white;
 }
 
 .audio-comment {
@@ -254,7 +262,6 @@ footer div {
     border: 2px solid #ff2453;
     border-radius: .5rem;
     border-top-right-radius: 0;
-    padding: 1.7vh;
     background: #333;
 }
 

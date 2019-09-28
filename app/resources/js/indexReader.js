@@ -35,6 +35,7 @@ function init() {
     audioUpload.addEventListener("input", onNewAudioSelected);
 
     view.addEventListener("newTextComment", onNewTextComment);
+    view.addEventListener("newAudioComment", onNewAudioComment);
 
     initButtons();
     intiPDF(pdfPath);
@@ -79,6 +80,10 @@ function onNewTextComment(event) {
     document.getElementsByClassName("comment-edit-btn")[event.data].addEventListener("click", onCommentEdit.bind(this, event.data));
     document.getElementsByClassName("comment-delete-btn")[event.data].addEventListener("click", onCommentDelete.bind(this, event.data));
     document.getElementsByClassName("comment-content")[event.data].addEventListener("input", onCommentEdited.bind(this, event.data));
+}
+
+function onNewAudioComment(event) {
+    document.getElementsByClassName("comment-delete-btn")[event.data].addEventListener("click", onCommentDelete.bind(this, event.data));
 }
 
 function onCommentEdit(id) {
