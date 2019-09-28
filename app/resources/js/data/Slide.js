@@ -42,6 +42,7 @@ class Slide extends Observable{
                 this._comments[i].content = content;
             }
         }
+        this.notifyAll(new Event("commentsChanged", this._comments));
     }
 
     //by using this function with a id parameter, you can delete a comment

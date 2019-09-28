@@ -223,6 +223,7 @@ footer div {
 
 .text-comment {
     width: 90%;
+    height: fit-content;
     margin: 0 auto 2vh auto;
     text-align: left;
     border: 2px solid #ff2453;
@@ -231,8 +232,13 @@ footer div {
     padding: 1.7vh;
 }
 
+.comment-content {
+    word-wrap: break-word;
+}
+
 .text-comment .toolbar {
     width: inherit;
+    height: 0;
     padding-right: 4vh;
     position: absolute;
     display: none;
@@ -358,10 +364,10 @@ footer div {
 }
 
 #add-comments-section {
-  width: 20%;
-  height: 100%;
-  float: left;
-  margin: 0 auto;
+    width: 20%;
+    height: 100%;
+    float: left;
+    margin: 0 auto;
 }
 
 /*css for search.html*/
