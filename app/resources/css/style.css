@@ -230,6 +230,7 @@ footer div {
     padding: 1.7vh;
     word-wrap: break-word;
     line-break: auto;
+    white-space: pre;
 }
 
 .toolbar {
