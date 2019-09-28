@@ -33,14 +33,7 @@ class ReaderView extends Observable{
 
     updateNameDisplay(name) {
         this.slidesName.innerText = name;
-        this.editSymbol.classList.remove("hidden");
     }
-
-    /*
-    deleteEditSign() {
-        this.slidesName.innerText = this.slidesName.innerText.substring(0, this.slidesName.innerText.length - 2);
-    }
-    */
 
     updatePageDisplay(pageValues) {
         this.pageDisplay.innerText = pageValues.currentPage + "/" + pageValues.totalPages;
@@ -248,7 +241,6 @@ class ReaderView extends Observable{
         this.commentTextArea.value = "";
         return value;
     }
-
 }
 
 function clearComments(wrapper, correction) {
