@@ -139,8 +139,19 @@ footer div {
 #slides-name {
     float: left;
     min-height: 1em;
-    width: 95%;
+    width:auto;
     text-align: left;
+    display: inline-block;
+}
+
+#edit-symbol {
+  display: inline-block;
+  float: left;
+  text-align: left;
+}
+
+#name-wrapper {
+  display: inline-block;
 }
 
 #publish-btn {
