@@ -34,8 +34,6 @@ function init() {
     stopRecording.addEventListener("click", onStopRecording);
     audioUpload.addEventListener("input", onNewAudioSelected);
 
-    view.addEventListener("newTextComment", onNewTextComment);
-
     initButtons();
     intiPDF(pdfPath);
     initSlides(pdfName, pdfPath, pdfComments, pdfIDCount);
@@ -67,30 +65,8 @@ function onPageChanged(event) {
     view.updateComments(event.data.currentPage, currentSlides.comments);
 }
 
-//comment handlers
-
 function onCommentsChanged(event) {
-    console.log(event.data);
     view.updateComments(pdfManager.currentPage, event.data);
-}
-
-function onNewTextComment(event) {
-    //register listener which then calls the respective function and hands it the id of the comment by binding it to the callback
-    document.getElementsByClassName("comment-edit-btn")[event.data].addEventListener("click", onCommentEdit.bind(this, event.data));
-    document.getElementsByClassName("comment-delete-btn")[event.data].addEventListener("click", onCommentDelete.bind(this, event.data));
-    document.getElementsByClassName("comment-content")[event.data].addEventListener("input", onCommentEdited.bind(this, event.data));
-}
-
-function onCommentEdit(id) {
-    document.getElementsByClassName("comment-content")[id].contentEditable = true;
-}
-
-function onCommentEdited(id) {
-    currentSlides.changeComment(id, document.getElementsByClassName("comment-content")[id].innerText);
-}
-
-function onCommentDelete(id) {
-    currentSlides.removeComment(id);
 }
 
 function onAudioComment() {
@@ -209,6 +185,7 @@ function onVideoRecord() {
 }
 
 function onPublish() {
+    view.updateSlidesName(currentSlides);
     conn.post(currentSlides.generateJSONString());
 }
 
