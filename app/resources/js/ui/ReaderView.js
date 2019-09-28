@@ -1,12 +1,8 @@
-import Observable, {Event} from "../utility/Observable.js";
-
 /* eslint-env browser */
 
-class ReaderView extends Observable{
+class ReaderView{
 
     constructor() {
-        super();
-
         this.backButton = document.getElementById("back-btn");
         this.slidesName = document.getElementById("slides-name");
         this.publishButton = document.getElementById("publish-btn");
@@ -58,31 +54,12 @@ class ReaderView extends Observable{
                 switch (comment.type) {
                     case "text": {
                         //here the html for text comments is generated and added to the reader.ejs
-                        let wrapper = document.createElement("div"),
-                            editButton = document.createElement("button"),
-                            deleteButton = document.createElement("button"),
-                            toolbar = document.createElement("div"),
-                            content = document.createElement("div"),
+                        let newEl = document.createElement("p"),
                             cNode = document.createTextNode(comment.content);
 
-                        editButton.innerText = "🖉";
-                        editButton.classList.add("comment-edit-btn");
-                        deleteButton.innerText = "🗑";
-                        deleteButton.classList.add("comment-delete-btn");
-
-                        toolbar.appendChild(deleteButton);
-                        toolbar.appendChild(editButton);
-                        toolbar.classList.add("toolbar");
-
-                        content.appendChild(cNode);
-                        content.classList.add("comment-content");
-
-                        wrapper.appendChild(toolbar);
-                        wrapper.appendChild(content);
-                        wrapper.classList.add("text-comment");
-
-                        this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
-                        this.notifyAll(new Event("newTextComment", comment.id));
+                        newEl.appendChild(cNode);
+                        newEl.classList.add("text-comment");
+                        this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
                         break;
                     }
                     //here the html for audio comments is generated and added to the reader.ejs
@@ -212,9 +189,9 @@ class ReaderView extends Observable{
 
     showEditSymbol(isShown) {
         if (isShown) {
-            this.editSymbol.classList.remove("hidden");
+            this.editSymbol.classList.remove("edit-symbol-hide");
         } else {
-            this.editSymbol.classList.add("hidden");
+            this.editSymbol.classList.add("edit-symbol-hide");
         }
     }
 
@@ -250,6 +227,10 @@ class ReaderView extends Observable{
             comments: slide.comments,
             idCount: slide.idCount,
         });
+    }
+
+    updateSlidesName(slides) {
+        slides.name = this.slidesName.innerText;
     }
 
     get commentInput() {

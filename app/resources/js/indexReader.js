@@ -68,10 +68,7 @@ function onPageChanged(event) {
     view.updateComments(event.data.currentPage, currentSlides.comments);
 }
 
-//comment handlers
-
 function onCommentsChanged(event) {
-    console.log(event.data);
     view.updateComments(pdfManager.currentPage, event.data);
 }
 
@@ -214,6 +211,7 @@ function onVideoRecord() {
 }
 
 function onPublish() {
+    view.updateSlidesName(currentSlides);
     conn.post(currentSlides.generateJSONString());
 }
 

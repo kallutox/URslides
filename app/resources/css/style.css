@@ -136,6 +136,10 @@ footer div {
     text-align: left;
 }
 
+.edit-symbol-hide {
+    color: #FAFAFA;
+}
+
 #slides-name {
     float: left;
     min-height: 1em;
