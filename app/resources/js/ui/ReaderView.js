@@ -11,6 +11,7 @@ class ReaderView{
         this.commentTextArea = document.getElementById("comment-input");
         this.heightCorrectionEl = document.getElementById("comment-height-correction");
         this.pageDisplay = document.getElementById("page-num");
+        this.editSymbol = document.getElementById("edit-symbol");
 
         this.videoButton = document.getElementById("video-btn");
         this.audioButton = document.getElementById("audio-btn");
@@ -27,12 +28,15 @@ class ReaderView{
     }
 
     updateNameDisplay(name) {
-        this.slidesName.innerText = name + "  🖉";
+        this.slidesName.innerText = name;
+        this.editSymbol.classList.remove("hidden");
     }
 
+    /*
     deleteEditSign() {
         this.slidesName.innerText = this.slidesName.innerText.substring(0, this.slidesName.innerText.length - 2);
     }
+    */
 
     updatePageDisplay(pageValues) {
         this.pageDisplay.innerText = pageValues.currentPage + "/" + pageValues.totalPages;
@@ -173,6 +177,13 @@ class ReaderView{
         }
     }
 
+<<<<<<< HEAD
+    showEditSymbol(isShown) {
+        if (isShown) {
+            this.editSymbol.classList.remove("hidden");
+        } else {
+            this.editSymbol.classList.add("hidden");
+=======
     enableRecordButton(isEnabled) {
         if (isEnabled) {
             this.recordButton.disabled = false;
@@ -186,6 +197,7 @@ class ReaderView{
             this.stopRecordButton.disabled = false;
         } else {
             this.stopRecordButton.disabled = true;
+>>>>>>> 9ba1cf795221006e85cd801ae4a14f5208a42823
         }
     }
 
