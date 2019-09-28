@@ -29,14 +29,7 @@ class ReaderView{
 
     updateNameDisplay(name) {
         this.slidesName.innerText = name;
-        this.editSymbol.classList.remove("hidden");
     }
-
-    /*
-    deleteEditSign() {
-        this.slidesName.innerText = this.slidesName.innerText.substring(0, this.slidesName.innerText.length - 2);
-    }
-    */
 
     updatePageDisplay(pageValues) {
         this.pageDisplay.innerText = pageValues.currentPage + "/" + pageValues.totalPages;
@@ -61,26 +54,12 @@ class ReaderView{
                 switch (comment.type) {
                     case "text": {
                         //here the html for text comments is generated and added to the reader.ejs
-                        let wrapper = document.createElement("div"),
-                            editButton = document.createElement("button"),
-                            deleteButton = document.createElement("button"),
-                            toolbar = document.createElement("div"),
+                        let newEl = document.createElement("p"),
                             cNode = document.createTextNode(comment.content);
 
-                        editButton.innerText = "🖉";
-                        editButton.classList.add("comment-edit-btn");
-                        deleteButton.innerText = "🗑";
-                        deleteButton.classList.add("comment-delete-btn");
-
-                        toolbar.appendChild(deleteButton);
-                        toolbar.appendChild(editButton);
-                        toolbar.classList.add("toolbar");
-
-                        wrapper.appendChild(toolbar);
-                        wrapper.appendChild(cNode);
-                        wrapper.classList.add("text-comment");
-
-                        this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
+                        newEl.appendChild(cNode);
+                        newEl.classList.add("text-comment");
+                        this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
                         break;
                     }
                     //here the html for audio comments is generated and added to the reader.ejs
@@ -239,7 +218,6 @@ class ReaderView{
         this.commentTextArea.value = "";
         return value;
     }
-
 }
 
 function clearComments(wrapper, correction) {

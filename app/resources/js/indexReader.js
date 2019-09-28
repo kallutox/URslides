@@ -272,7 +272,8 @@ function adjustUI(edit) {
         view.showAudioButton(false);
         view.showVideoSection(false);
         view.showAudioSection(false);
-        view.deleteEditSign();
+        view.showEditSymbol(false);
+        view.editSlidesName(false);
     }
 }
 
