@@ -224,6 +224,7 @@ footer div {
     border-radius: .5rem;
     border-top-right-radius: 0;
     padding: 1.7vh;
+    background: #333;
 }
 
 #comment-height-correction {
@@ -244,7 +245,7 @@ footer div {
     margin: 0 auto;
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
-    background: #ccc;
+    background: #fff;
     border: 2px solid #ff2453;
     border-bottom: none;
 }

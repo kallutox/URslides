@@ -40,13 +40,6 @@
     <div id="comment-section-wrapper">
         <div id="comments-wrapper">
             <div id="comment-height-correction"></div>
-            <div class="audio-comment audio-example hidden">
-                <img src="img/play_glyph.png" width="30" height="30" alt="play pause" class="play-pause-btn" />
-                <input type="range" min="0" max="100" value="0" class="slider audio-pos">
-                <!-- speaker img downloaded from https://www.flaticon.com/free-icon/speaker-filled-audio-tool_59284 -->
-                <img src="img/speaker.png" width="20" height="20" />
-                <input type="range" min="0" max="100" value="100" class="slider audio-vol">
-            </div>
         </div>
 
         <div id="input-area">
@@ -54,9 +47,8 @@
                 <div id="recording-items-wrapper" class="hidden">
                     <p id="time-display">0s</p>
                     <p id="close-recording-section" class="close"><strong>x</strong></p>
-                    <button id="record" class="btn btn-outline-danger">Record</button>
-                    <button id="pause-record" class="btn btn-outline-danger">Pause</button>
-                    <button id="stop-record" class="btn btn-outline-danger">Stop</button>
+                    <button id="record" class="btn btn-danger">Record</button>
+                    <button id="stop-record" class="btn btn-danger">Stop</button>
                 </div>
             </div>
 
@@ -73,12 +65,15 @@
                             Upload Audio</button>
                         <button id="audio-record-btn" class="btn btn-outline-danger">Record Audio</button>
 
-                        <form action="/audioupload" enctype="multipart/form-data" method="post">
+                        <form action="/audioupload" enctype="multipart/form-data" method="post" id="audio-form">
                             <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload"
                                 class="hidden">
-                                <audio src="/audio/e.mp3"></audio>
                             <input type="text" name="slide" id="slide-string" class="hidden">
                             <button type="submit" id="audio-confirm-btn" class="hidden"></button>
+                        </form>
+
+                        <form id="record-form">
+                            <button type="submit" id="record-confirm-btn"></button>
                         </form>
                     </div>
 
@@ -104,5 +99,5 @@
 
 <!-- include pdf.js -->
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.1.266/build/pdf.min.js"></script>
-<script src="/js/libs/web-audio-recorder-js/WebAudioRecorder.min.js"></script>
+<script src="/js/libs/web-audio-recorder-js/WebAudioRecorder.js"></script>
 <script type="module" src="/js/indexReader.js"></script>

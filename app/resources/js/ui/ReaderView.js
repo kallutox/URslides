@@ -1,11 +1,8 @@
 /* eslint-env browser */
-import Observable, { Event } from "../utility/Observable.js";
 
-class ReaderView extends Observable {
+class ReaderView{
 
     constructor() {
-        super();
-
         this.backButton = document.getElementById("back-btn");
         this.slidesName = document.getElementById("slides-name");
         this.publishButton = document.getElementById("publish-btn");
@@ -68,12 +65,16 @@ class ReaderView extends Observable {
                     }
                     //here the html for audio comments is generated and added to the reader.ejs
                     case "audio": {
-                        let newEl = this.audioExample.cloneNode(true);
+                        let wrapper = document.createElement("div"),
+                            audio = document.createElement("audio");
 
-                        newEl.classList.remove("audio-example");
-                        newEl.classList.remove("hidden");
-                        this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
-                        this.notifyAll(new Event("newAudio", comment.content));
+                        audio.controls = true;
+                        audio.src = comment.content;
+
+                        wrapper.classList.add("audio-comment");
+                        wrapper.appendChild(audio);
+
+                        this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
                         break;
                     }
                     case "video": {
@@ -179,6 +180,7 @@ class ReaderView extends Observable {
     }
 
     updateSlideString(slide) {
+        //in future get slideString directly from the slides object by using the generateJSONString() Method
         this.slidesString.value = JSON.stringify({
             name: slide.name,
             pdf: slide.pdf,

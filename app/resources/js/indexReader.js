@@ -3,12 +3,16 @@ import PDFManager from "../js/data/PDFManager.js";
 import ReaderView from "../js/ui/ReaderView.js";
 import Slide from "../js/data/Slide.js";
 import Connection from "../js/utility/Connection.js";
+import AudioRecorder from "../js/data/AudioRecorder.js";
 
 var pdfManager = new PDFManager(),
     view = new ReaderView(),
     conn = new Connection(),
+    audioRecorder,
     currentSlides,
     audioUpload,
+    startRecording,
+    stopRecording,
     videoUpload,
     audioPlayBtns = [],
     audioPosSliders = [],
@@ -24,8 +28,11 @@ function init() {
 
     //not good, place elsewhere
     audioUpload = document.getElementById("audio-upload");
+    startRecording = document.getElementById("record");
+    stopRecording = document.getElementById("stop-record");
+    startRecording.addEventListener("click", onStartRecording);
+    stopRecording.addEventListener("click", onStopRecording);
     audioUpload.addEventListener("input", onNewAudioSelected);
-    view.addEventListener("newAudio", onNewAudio);
 
     initButtons();
     intiPDF(pdfPath);
@@ -79,25 +86,51 @@ function onNewAudioSelected() {
     document.getElementById("audio-confirm-btn").click();
 }
 
-function onNewAudio(event) {
-    //assign all audio arrays anew
-    var index = audioPlayBtns.length;
-
-    audioPlayBtns.push(document.getElementsByClassName("play-pause-btn")[index]);
-    audioPosSliders = document.getElementsByClassName("audio-pos");
-    audioVolSliders = document.getElementsByClassName("audio-vol");
-    audios.push(new Audio(event.data));
-
-    //add all listeners to new elements
-    audioPlayBtns[index].addEventListener("click", onPlayPause.bind(this, index));
-    audioPosSliders[index].addEventListener("input", onPosInput.bind(this, index));
-    audioVolSliders[index].addEventListener("input", onVolInput.bind(this, index));
-    audios[index].addEventListener("ended", onAudioEnd.bind(this, index));
-    audios[index].addEventListener("timeupdate", onAudioTimeChanged.bind(this, index));
-}
-
 function onOpenRecordAudio() {
     view.showRecordAudioMenu(true);
+
+    if(audioRecorder === undefined) {
+        console.log("here");
+        audioRecorder = new AudioRecorder;
+        audioRecorder.addEventListener("newAudioAvailable", onNewAudioAvailable);
+    }
+}
+
+function onStartRecording() {
+    audioRecorder.startRecording();
+}
+
+function onStopRecording() {
+    audioRecorder.stopRecording();
+}
+
+function onNewAudioAvailable(event) {
+    var audioForm = document.getElementById("record-form");
+
+    audioForm.onsubmit = async (e) => {
+        e.preventDefault();
+
+        let formData = new FormData(audioForm);
+
+        formData.append("audio-upload", event.data, currentSlides.name + (currentSlides.idCount + 1)+ "01.mp3");
+        formData.append("slide", currentSlides.generateJSONString());
+
+        let response = await fetch("/audioupload", {
+            method: 'POST',
+            body: formData,
+        })
+
+        response.json().then(function (data) {
+            console.log(data.comments);
+            currentSlides = new Slide(currentSlides.name, currentSlides.pdf, [], currentSlides.idCount + 1);
+            currentSlides.addEventListener("commentsChanged", onCommentsChanged);
+            data.comments.forEach(comment => {
+                currentSlides.addComment(comment._page, comment._type, comment._content);
+            });
+        });
+    }
+
+    document.getElementById("record-confirm-btn").click();
 }
 
 function onCloseRecordAudio() {
