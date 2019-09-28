@@ -1,8 +1,12 @@
+import Observable, {Event} from "../utility/Observable.js";
+
 /* eslint-env browser */
 
-class ReaderView{
+class ReaderView extends Observable{
 
     constructor() {
+        super();
+
         this.backButton = document.getElementById("back-btn");
         this.slidesName = document.getElementById("slides-name");
         this.publishButton = document.getElementById("publish-btn");
@@ -65,6 +69,7 @@ class ReaderView{
                             editButton = document.createElement("button"),
                             deleteButton = document.createElement("button"),
                             toolbar = document.createElement("div"),
+                            content = document.createElement("div"),
                             cNode = document.createTextNode(comment.content);
 
                         editButton.innerText = "🖉";
@@ -76,11 +81,15 @@ class ReaderView{
                         toolbar.appendChild(editButton);
                         toolbar.classList.add("toolbar");
 
+                        content.appendChild(cNode);
+                        content.classList.add("comment-content");
+
                         wrapper.appendChild(toolbar);
-                        wrapper.appendChild(cNode);
+                        wrapper.appendChild(content);
                         wrapper.classList.add("text-comment");
 
                         this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
+                        this.notifyAll(new Event("newTextComment", comment.id));
                         break;
                     }
                     //here the html for audio comments is generated and added to the reader.ejs
