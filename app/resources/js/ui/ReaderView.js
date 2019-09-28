@@ -89,9 +89,14 @@ class ReaderView extends Observable{
 
                         this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
 
-                        this.notifyAll(new Event("newTextComment", comment.id));
+                        //listeneres for toolbar don't need to be registered when not editing
+                        if(edit) {
+                            this.notifyAll(new Event("newTextComment", comment.id));
+                        }
+
                         break;
                     }
+
                     //here the html for audio comments is generated and added to the reader.ejs
                     case "audio": {
                         let wrapper = document.createElement("div"),
@@ -128,13 +133,20 @@ class ReaderView extends Observable{
                         }
 
                         this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
-                        this.notifyAll(new Event("newAudioComment", comment.id));
+
+                        //listeneres for toolbar don't need to be registered when not editing
+                        if(edit) {
+                            this.notifyAll(new Event("newAudioComment", comment.id));
+                        }
+                        
                         break;
                     }
+
                     case "video": {
                         //add code that is used to generate the video comments
                         break;
                     }
+
                     default: {
                         console.log("Requested comment " + comment.type + " type is not available!");
                         break;
