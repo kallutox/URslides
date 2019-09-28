@@ -122,6 +122,10 @@ class ReaderView extends Observable{
 
                         wrapper.appendChild(audio);
                         wrapper.classList.add("audio-comment");
+                        //test if comment was deleted
+                        if(comment.content === "") {
+                            wrapper.classList.add("hidden");
+                        }
 
                         this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
                         this.notifyAll(new Event("newAudioComment", comment.id));
@@ -208,9 +212,9 @@ class ReaderView extends Observable{
 
     showEditSymbol(isShown) {
         if (isShown) {
-            this.editSymbol.classList.remove("edit-symbol-hide");
+            this.editSymbol.classList.remove("hidden");
         } else {
-            this.editSymbol.classList.add("edit-symbol-hide");
+            this.editSymbol.classList.add("hidden");
         }
     }
 
