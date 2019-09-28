@@ -65,10 +65,9 @@
                             Upload Audio</button>
                         <button id="audio-record-btn" class="btn btn-outline-danger">Record Audio</button>
 
-                        <form action="/audioupload" enctype="multipart/form-data" method="post" id="audio-form">
+                        <form id="audio-form">
                             <input type="file" accept=".mp3,audio/*" name="audio-upload" id="audio-upload"
                                 class="hidden">
-                            <input type="text" name="slide" id="slide-string" class="hidden">
                             <button type="submit" id="audio-confirm-btn" class="hidden"></button>
                         </form>
 

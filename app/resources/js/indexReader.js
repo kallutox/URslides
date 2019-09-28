@@ -75,14 +75,34 @@ function onAudioComment() {
 }
 
 function onAudioUpload() {
-    let comment = view.commentInput;
-
-    view.updateSlideString(currentSlides);
     audioUpload.click();
-    currentSlides.addComment(pdfManager.currentPage, "audio", comment);
 }
 
 function onNewAudioSelected() {
+    var audioForm = document.getElementById("audio-form");
+
+    audioForm.onsubmit = async (e) => {
+        e.preventDefault();
+
+        let formData = new FormData(audioForm);
+
+        formData.append("slide", currentSlides.generateJSONString());
+
+        let response = await fetch("/audioupload", {
+            method: 'POST',
+            body: formData,
+        });
+
+        response.json().then(function (data) {
+            console.log(data.comments);
+            currentSlides = new Slide(currentSlides.name, currentSlides.pdf, [], currentSlides.idCount + 1);
+            currentSlides.addEventListener("commentsChanged", onCommentsChanged);
+            data.comments.forEach(comment => {
+                currentSlides.addComment(comment._page, comment._type, comment._content);
+            });
+        });
+    };
+    
     document.getElementById("audio-confirm-btn").click();
 }
 
@@ -118,7 +138,7 @@ function onNewAudioAvailable(event) {
         let response = await fetch("/audioupload", {
             method: 'POST',
             body: formData,
-        })
+        });
 
         response.json().then(function (data) {
             console.log(data.comments);
@@ -128,7 +148,7 @@ function onNewAudioAvailable(event) {
                 currentSlides.addComment(comment._page, comment._type, comment._content);
             });
         });
-    }
+    };
 
     document.getElementById("record-confirm-btn").click();
 }
