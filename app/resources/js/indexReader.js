@@ -93,7 +93,10 @@ function onCommentEdited(id) {
 }
 
 function onCommentDelete(id) {
-    currentSlides.removeComment(id);
+    var confirm = window.confirm("Do you really want to delete this comment?")
+    if(confirm == true) {
+        currentSlides.removeComment(id);
+    }
 }
 
 function onAudioComment() {
@@ -303,7 +306,6 @@ function adjustUI(edit) {
         view.editSlidesName(false);
     } else {
         view.showEditSymbol(true);
-        view.showToolbar(true);
     }
 }
 

@@ -82,8 +82,13 @@ class ReaderView extends Observable{
 
                         wrapper.appendChild(content);
                         wrapper.classList.add("text-comment");
+                        //test if comment was deleted
+                        if(comment.content === "") {
+                            wrapper.classList.add("hidden");
+                        }
 
                         this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
+
                         this.notifyAll(new Event("newTextComment", comment.id));
                         break;
                     }
