@@ -177,13 +177,14 @@ class ReaderView{
         }
     }
 
-<<<<<<< HEAD
     showEditSymbol(isShown) {
         if (isShown) {
             this.editSymbol.classList.remove("hidden");
         } else {
             this.editSymbol.classList.add("hidden");
-=======
+        }
+    }
+
     enableRecordButton(isEnabled) {
         if (isEnabled) {
             this.recordButton.disabled = false;
@@ -197,7 +198,6 @@ class ReaderView{
             this.stopRecordButton.disabled = false;
         } else {
             this.stopRecordButton.disabled = true;
->>>>>>> 9ba1cf795221006e85cd801ae4a14f5208a42823
         }
     }
 
