@@ -7,18 +7,16 @@ class HomeView {
         this.uploadButton = document.getElementById("default-wrapper");
         this.uploadSection = document.getElementById("upload-wrapper");
         this.confirmUploadButton = document.getElementById("confirm-upload");
-        this.progressBar = document.getElementsByClassName("progress")[0];
+        this.loadingCircle = document.getElementById("loading-circle");
         this.pathDisplay = document.getElementById("path-display");
         this.progressLabel = document.getElementById("progress-label");
         this.browseButton = document.getElementById("browse-btn");
+        this.itemSearch = document.getElementById("itemsearch");
+        this.itemSearchButton = document.getElementById("itemsearch-btn");
     }
 
     changePathDisplay(text) {
         this.pathDisplay.placeholder = text;
-    }
-
-    setProgress(progress) {
-
     }
 
     disableBrowseButton() {
@@ -50,14 +48,19 @@ class HomeView {
         }
     }
 
-    showProgressBar(isShown){
+    showLoadingCircle(isShown){
         if(isShown) {
-            this.progressBar.classList.remove("hidden");
+            this.loadingCircle.classList.remove("hidden");
             this.progressLabel.classList.remove("hidden");
         } else {
-            this.progressBar.classList.add("hidden");
+            this.loadingCircle.classList.add("hidden");
             this.progressLabel.classList.add("hidden");
         }
+    }
+
+    disableSearch(){
+        this.itemSearch.disabled = true;
+        this.itemSearchButton.disabled = true;
     }
 }
 

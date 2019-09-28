@@ -171,23 +171,17 @@ footer div {
     width: 90%;
     margin: 1em auto;
     overflow: hidden;
-    position: relative;
 }
 
 #reader {
     float: left;
     width: 40%;
-    height: 60vh;
-    position: absolute;
+    height: 70vh;
 }
 
 #reader-nav {
-    float: center;
-    max-width: 400px;
-    width: 50%;
-    margin: 0 25%;
+    width: inherit;
     position: absolute;
-    overflow: hidden;
 }
 
 #btn-previous {

@@ -252,12 +252,18 @@ class ReaderView extends Observable {
         }
     }
 
+    get readerDimensions(){
+        var reader = document.getElementById("reader");
+
+        return {width: reader.offsetWidth, height: reader.offsetHeight};
+    }
+
     get slidesNameContent() {
         return this.slidesName.innerText;
     }
 
     get commentInput() {
-        let value = this.commentTextArea.value;
+        var value = this.commentTextArea.value;
 
         this.commentTextArea.value = "";
         return value;

@@ -32,9 +32,10 @@ function onFileSelection() {
 }
 
 function onConfirmUpload() {
-    view.showProgressBar(true);
+    view.showLoadingCircle(true);
     view.showConfirmUploadButton(false);
     view.disableBrowseButton();
+    view.disableSearch();
 }
 
 init();

@@ -9,10 +9,10 @@ var isRendering = false,
 
 class PDFManager extends Observable{
 
-    constructor() {
+    constructor(dimensions) {
         super();
         this._currentPage = 0;
-        this.maxVH = getMaxVH();
+        this.dimensions = dimensions;
         this.pageNum = 0;
         this.currentPDF = null;
     }
@@ -36,7 +36,7 @@ class PDFManager extends Observable{
             pageNumPending = page;
         } else {
             this._currentPage = page;
-            render(this.currentPDF, this._currentPage, this.maxVH);
+            render(this.currentPDF, this._currentPage, this);
             this.notifyAll(new Event("pageChanged", {
                 currentPage: this._currentPage,
                 totalPages: this.pageNum,
@@ -63,18 +63,27 @@ class PDFManager extends Observable{
     }
 }
 
-function render(pdf, page, vh) {
+function render(pdf, page, self) {
     //this function gets a loadingTask and translates it into a renderedPDF
-    let h = vh;
     pdf.getPage(page).then(function (page) {
-        var desiredHeight = h * 0.7,
-            viewport = page.getViewport({ scale: 1 }),
-            scale = desiredHeight / viewport.height,
-            scaledViewport = page.getViewport({ scale: scale }),
-            canvas = document.getElementById("reader-canvas"),
-            context = canvas.getContext("2d"),
+        var viewport = page.getViewport({ scale: 1 }),
             renderContext = 0,
-            renderTask = null;
+            renderTask = null,
+            scale,
+            scaledViewport,
+            canvas,
+            context;
+        
+        //choose the correct dimension scaling, if pdf is horizontal scale by width, if pdf is vertical scale by height
+        if(viewport.height > viewport.width) {
+            scale = self.dimensions.height / viewport.height;
+        } else {
+            scale = self.dimensions.width / viewport.width;
+        }
+
+        scaledViewport = page.getViewport({ scale: scale });
+        canvas = document.getElementById("reader-canvas");
+        context = canvas.getContext("2d");
         viewport = page.getViewport({ scale: scale });
         canvas.height = scaledViewport.height;
         canvas.width = scaledViewport.width;

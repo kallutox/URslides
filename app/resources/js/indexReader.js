@@ -5,8 +5,8 @@ import Slide from "../js/data/Slide.js";
 import Connection from "../js/utility/Connection.js";
 import AudioRecorder from "../js/data/AudioRecorder.js";
 
-var pdfManager = new PDFManager(),
-    view = new ReaderView(),
+var view = new ReaderView(),
+    pdfManager = new PDFManager(view.readerDimensions),
     conn = new Connection(),
     pdfEdit,
     audioRecorder,

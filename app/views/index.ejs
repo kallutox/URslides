@@ -25,9 +25,8 @@
         </form>
 
         <p id="progress-label" class="hidden">now uploading...</p>
-        <div class="progress hidden">
-            <div class="progress-bar theme-bg" role="progressbar" aria-valuenow="0" aria-valuemin="0"
-                aria-valuemax="100"></div>
+        <div class="spinner-border themecolor hidden" role="status" id="loading-circle">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
 </div>
@@ -38,7 +37,7 @@
     <p>or search for <span class="themecolor">slides</span>!</p>
     <div class="input-group flex-nowrap">
         <input type="text" name="itemsearch" id="itemsearch" class="form-control" placeholder="Search for slides...">
-        <button type="submit" class="btn btn-outline-danger border-edge-left">Search</button>
+        <button type="submit" class="btn btn-outline-danger border-edge-left" id="itemsearch-btn">Search</button>
     </div>
 </div>
 
