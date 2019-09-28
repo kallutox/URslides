@@ -195,9 +195,9 @@ class ReaderView extends Observable{
 
     showEditSymbol(isShown) {
         if (isShown) {
-            this.editSymbol.classList.remove("hidden");
+            this.editSymbol.classList.remove("edit-symbol-hide");
         } else {
-            this.editSymbol.classList.add("hidden");
+            this.editSymbol.classList.add("edit-symbol-hide");
         }
     }
 
