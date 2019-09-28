@@ -211,7 +211,7 @@ function onVideoRecord() {
 }
 
 function onPublish() {
-    view.updateSlidesName(currentSlides);
+    currentSlides.name = view.slidesNameContent;
     conn.post(currentSlides.generateJSONString());
 }
 

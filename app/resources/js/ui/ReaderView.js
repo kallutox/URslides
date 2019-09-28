@@ -1,6 +1,5 @@
-import Observable, {Event} from "../utility/Observable.js";
-
 /* eslint-env browser */
+import Observable, {Event} from "../utility/Observable.js";
 
 class ReaderView extends Observable{
 
@@ -8,7 +7,6 @@ class ReaderView extends Observable{
         super();
 
         this.backButton = document.getElementById("back-btn");
-        this.slidesName = document.getElementById("slides-name");
         this.publishButton = document.getElementById("publish-btn");
         this.commentWrapper = document.getElementById("comments-wrapper");
         this.commentInputArea = document.getElementById("input-area");
@@ -227,14 +225,8 @@ class ReaderView extends Observable{
         }
     }
 
-    updateSlideString(slide) {
-        //in future get slideString directly from the slides object by using the generateJSONString() Method
-        this.slidesString.value = JSON.stringify({
-            name: slide.name,
-            pdf: slide.pdf,
-            comments: slide.comments,
-            idCount: slide.idCount,
-        });
+    get slidesNameContent() {
+        return this.slidesName.innerText;
     }
 
     get commentInput() {
