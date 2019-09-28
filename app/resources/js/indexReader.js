@@ -8,6 +8,7 @@ import AudioRecorder from "../js/data/AudioRecorder.js";
 var pdfManager = new PDFManager(),
     view = new ReaderView(),
     conn = new Connection(),
+    pdfEdit,
     audioRecorder,
     currentSlides,
     audioUpload,
@@ -23,8 +24,8 @@ function init() {
     var pdfPath = document.getElementById("pdf-path").innerText.trim(),
         pdfName = document.getElementById("pdf-name").innerText.trim(),
         pdfComments = document.getElementById("pdf-comments").innerText,
-        pdfEdit = document.getElementById("pdf-edit").innerText.trim(),
         pdfIDCount = document.getElementById("pdf-idcount").innerText.trim();
+    pdfEdit = document.getElementById("pdf-edit").innerText.trim();
 
     //not good, place elsewhere
     audioUpload = document.getElementById("audio-upload");
@@ -69,7 +70,7 @@ function onPageChanged(event) {
 }
 
 function onCommentsChanged(event) {
-    view.updateComments(pdfManager.currentPage, event.data);
+    view.updateComments(pdfManager.currentPage, event.data, pdfEdit);
 }
 
 function onNewTextComment(event) {
@@ -92,7 +93,10 @@ function onCommentEdited(id) {
 }
 
 function onCommentDelete(id) {
-    currentSlides.removeComment(id);
+    var confirm = window.confirm("Do you really want to delete this comment?")
+    if(confirm == true) {
+        currentSlides.removeComment(id);
+    }
 }
 
 function onAudioComment() {
@@ -299,8 +303,9 @@ function adjustUI(edit) {
         view.showAudioButton(false);
         view.showVideoSection(false);
         view.showAudioSection(false);
-        view.showEditSymbol(false);
         view.editSlidesName(false);
+    } else {
+        view.showEditSymbol(true);
     }
 }
 

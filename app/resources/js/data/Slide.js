@@ -49,7 +49,7 @@ class Slide extends Observable{
     removeComment(id) {
         for(let i = 0; i < this._comments.length; i++) {
             if(this._comments[i].id === id) {
-                this._comments.splice(i);
+                this._comments[i].content = "";
             }
         }
         this.notifyAll(new Event("commentsChanged", this._comments));

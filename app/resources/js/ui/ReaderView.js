@@ -49,7 +49,7 @@ class ReaderView extends Observable{
         }
     }
 
-    updateComments(page, comments) {
+    updateComments(page, comments, edit) {
         clearComments(this.commentWrapper, this.heightCorrectionEl);
         comments.forEach(comment => {
             if (comment.page === page) {
@@ -75,11 +75,20 @@ class ReaderView extends Observable{
                         content.appendChild(cNode);
                         content.classList.add("comment-content");
 
-                        wrapper.appendChild(toolbar);
+                        //only append if application is in edit mode
+                        if(edit) {
+                            wrapper.appendChild(toolbar);
+                        }
+
                         wrapper.appendChild(content);
                         wrapper.classList.add("text-comment");
+                        //test if comment was deleted
+                        if(comment.content === "") {
+                            wrapper.classList.add("hidden");
+                        }
 
                         this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
+
                         this.notifyAll(new Event("newTextComment", comment.id));
                         break;
                     }
@@ -106,7 +115,11 @@ class ReaderView extends Observable{
                         toolbar.appendChild(editButton);
                         toolbar.classList.add("toolbar");
 
-                        wrapper.appendChild(toolbar);
+                        //only append if application is in edit mode
+                        if(edit) {
+                            wrapper.appendChild(toolbar);
+                        }
+
                         wrapper.appendChild(audio);
                         wrapper.classList.add("audio-comment");
 
