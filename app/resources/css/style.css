@@ -136,10 +136,6 @@ footer div {
     text-align: left;
 }
 
-.edit-symbol-hide {
-    color: #FAFAFA;
-}
-
 #slides-name {
     float: left;
     min-height: 1em;
@@ -149,7 +145,6 @@ footer div {
 }
 
 #edit-symbol {
-  display: inline-block;
   float: left;
   text-align: left;
 }

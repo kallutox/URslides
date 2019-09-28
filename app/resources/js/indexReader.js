@@ -299,8 +299,9 @@ function adjustUI(edit) {
         view.showAudioButton(false);
         view.showVideoSection(false);
         view.showAudioSection(false);
-        view.showEditSymbol(false);
         view.editSlidesName(false);
+    } else {
+        view.showEditSymbol(true);
     }
 }
 
