@@ -1,7 +1,7 @@
 /* eslint-env browser */
-import Observable, {Event} from "../utility/Observable.js";
+import Observable, { Event } from "../utility/Observable.js";
 
-class ReaderView extends Observable{
+class ReaderView extends Observable {
 
     constructor() {
         super();
@@ -52,105 +52,103 @@ class ReaderView extends Observable{
     updateComments(page, comments, edit) {
         clearComments(this.commentWrapper, this.heightCorrectionEl);
         comments.forEach(comment => {
-            if (comment.page === page) {
-                switch (comment.type) {
-                    case "text": {
-                        //here the html for text comments is generated and added to the reader.ejs
-                        let wrapper = document.createElement("div"),
-                            editButton = document.createElement("button"),
-                            deleteButton = document.createElement("button"),
-                            toolbar = document.createElement("div"),
-                            content = document.createElement("div"),
-                            cNode = document.createTextNode(comment.content);
+            switch (comment.type) {
+                case "text": {
+                    //here the html for text comments is generated and added to the reader.ejs
+                    let wrapper = document.createElement("div"),
+                        editButton = document.createElement("button"),
+                        deleteButton = document.createElement("button"),
+                        toolbar = document.createElement("div"),
+                        content = document.createElement("div"),
+                        cNode = document.createTextNode(comment.content);
 
-                        editButton.innerText = "🖉";
-                        editButton.classList.add("comment-edit-btn");
-                        deleteButton.innerText = "🗑";
-                        deleteButton.classList.add("comment-delete-btn");
+                    editButton.innerText = "🖉";
+                    editButton.classList.add("comment-edit-btn");
+                    deleteButton.innerText = "🗑";
+                    deleteButton.classList.add("comment-delete-btn");
 
-                        toolbar.appendChild(deleteButton);
-                        toolbar.appendChild(editButton);
-                        toolbar.classList.add("toolbar");
+                    toolbar.appendChild(deleteButton);
+                    toolbar.appendChild(editButton);
+                    toolbar.classList.add("toolbar");
 
-                        content.appendChild(cNode);
-                        content.classList.add("comment-content");
+                    content.appendChild(cNode);
+                    content.classList.add("comment-content");
 
-                        //only append if application is in edit mode
-                        if(edit) {
-                            wrapper.appendChild(toolbar);
-                        }
-
-                        wrapper.appendChild(content);
-                        wrapper.classList.add("text-comment");
-                        //test if comment was deleted
-                        if(comment.content === "") {
-                            wrapper.classList.add("hidden");
-                        }
-
-                        this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
-
-                        //listeneres for toolbar don't need to be registered when not editing
-                        if(edit) {
-                            this.notifyAll(new Event("newTextComment", comment.id));
-                        }
-
-                        break;
+                    //only append if application is in edit mode
+                    if (edit) {
+                        wrapper.appendChild(toolbar);
                     }
 
-                    //here the html for audio comments is generated and added to the reader.ejs
-                    case "audio": {
-                        let wrapper = document.createElement("div"),
-                            editButton = document.createElement("button"),
-                            deleteButton = document.createElement("button"),
-                            toolbar = document.createElement("div"),
-                            audio = document.createElement("audio");
-
-                        //edit settings for audio node
-                        audio.controls = true;
-                        audio.src = comment.content;
-                        audio.classList.add("comment-content");
-
-                        //edit button also needed, for correct calculation of the button indices
-                        editButton.classList.add("comment-edit-btn");
-                        editButton.classList.add("hidden");
-                        deleteButton.innerText = "🗑";
-                        deleteButton.classList.add("comment-delete-btn");
-
-                        toolbar.appendChild(deleteButton);
-                        toolbar.appendChild(editButton);
-                        toolbar.classList.add("toolbar");
-
-                        //only append if application is in edit mode
-                        if(edit) {
-                            wrapper.appendChild(toolbar);
-                        }
-
-                        wrapper.appendChild(audio);
-                        wrapper.classList.add("audio-comment");
-                        //test if comment was deleted
-                        if(comment.content === "") {
-                            wrapper.classList.add("hidden");
-                        }
-
-                        this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
-
-                        //listeneres for toolbar don't need to be registered when not editing
-                        if(edit) {
-                            this.notifyAll(new Event("newAudioComment", comment.id));
-                        }
-                        
-                        break;
+                    wrapper.appendChild(content);
+                    wrapper.classList.add("text-comment");
+                    //test if comment was deleted
+                    if (comment.content === "" || comment.page !== page) {
+                        wrapper.classList.add("hidden");
                     }
 
-                    case "video": {
-                        //add code that is used to generate the video comments
-                        break;
+                    this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
+
+                    //listeneres for toolbar don't need to be registered when not editing
+                    if (edit) {
+                        this.notifyAll(new Event("newTextComment", comment.id));
                     }
 
-                    default: {
-                        console.log("Requested comment " + comment.type + " type is not available!");
-                        break;
+                    break;
+                }
+
+                //here the html for audio comments is generated and added to the reader.ejs
+                case "audio": {
+                    let wrapper = document.createElement("div"),
+                        editButton = document.createElement("button"),
+                        deleteButton = document.createElement("button"),
+                        toolbar = document.createElement("div"),
+                        audio = document.createElement("audio");
+
+                    //edit settings for audio node
+                    audio.controls = true;
+                    audio.src = comment.content;
+                    audio.classList.add("comment-content");
+
+                    //edit button also needed, for correct calculation of the button indices
+                    editButton.classList.add("comment-edit-btn");
+                    editButton.classList.add("hidden");
+                    deleteButton.innerText = "🗑";
+                    deleteButton.classList.add("comment-delete-btn");
+
+                    toolbar.appendChild(deleteButton);
+                    toolbar.appendChild(editButton);
+                    toolbar.classList.add("toolbar");
+
+                    //only append if application is in edit mode
+                    if (edit) {
+                        wrapper.appendChild(toolbar);
                     }
+
+                    wrapper.appendChild(audio);
+                    wrapper.classList.add("audio-comment");
+                    //test if comment was deleted
+                    if (comment.content === "" || comment.page !== page) {
+                        wrapper.classList.add("hidden");
+                    }
+
+                    this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
+
+                    //listeneres for toolbar don't need to be registered when not editing
+                    if (edit) {
+                        this.notifyAll(new Event("newAudioComment", comment.id));
+                    }
+
+                    break;
+                }
+
+                case "video": {
+                    //add code that is used to generate the video comments
+                    break;
+                }
+
+                default: {
+                    console.log("Requested comment " + comment.type + " type is not available!");
+                    break;
                 }
             }
         });
