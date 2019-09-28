@@ -102,7 +102,7 @@ function onNewAudioSelected() {
             });
         });
     };
-    
+
     document.getElementById("audio-confirm-btn").click();
 }
 
