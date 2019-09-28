@@ -229,6 +229,7 @@ footer div {
 .text-comment .comment-content {
     padding: 1.7vh;
     word-wrap: break-word;
+    line-break: auto;
 }
 
 .toolbar {
