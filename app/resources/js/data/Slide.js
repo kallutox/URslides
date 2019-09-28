@@ -36,6 +36,14 @@ class Slide extends Observable{
         this.notifyAll(new Event("commentsChanged", this._comments));
     }
 
+    changeComment(id, content) {
+        for(let i = 0; i < this._comments.length; i++) {
+            if(this._comments[i].id === id) {
+                this._comments[i].content = content;
+            }
+        }
+    }
+
     //by using this function with a id parameter, you can delete a comment
     removeComment(id) {
         for(let i = 0; i < this._comments.length; i++) {

@@ -10,6 +10,10 @@ class Comment {
         this._content = content;
     }
 
+    set content(content) {
+        this._content = content;
+    }
+
     get id() {
         return this._id;
     }

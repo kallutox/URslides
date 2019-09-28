@@ -57,12 +57,26 @@ class ReaderView{
                 switch (comment.type) {
                     case "text": {
                         //here the html for text comments is generated and added to the reader.ejs
-                        let newEl = document.createElement("p"),
+                        let wrapper = document.createElement("div"),
+                            editButton = document.createElement("button"),
+                            deleteButton = document.createElement("button"),
+                            toolbar = document.createElement("div"),
                             cNode = document.createTextNode(comment.content);
 
-                        newEl.appendChild(cNode);
-                        newEl.classList.add("text-comment");
-                        this.commentWrapper.insertBefore(newEl, this.heightCorrectionEl);
+                        editButton.innerText = "🖉";
+                        editButton.classList.add("comment-edit-btn");
+                        deleteButton.innerText = "🗑";
+                        deleteButton.classList.add("comment-delete-btn");
+
+                        toolbar.appendChild(deleteButton);
+                        toolbar.appendChild(editButton);
+                        toolbar.classList.add("toolbar");
+
+                        wrapper.appendChild(toolbar);
+                        wrapper.appendChild(cNode);
+                        wrapper.classList.add("text-comment");
+
+                        this.commentWrapper.insertBefore(wrapper, this.heightCorrectionEl);
                         break;
                     }
                     //here the html for audio comments is generated and added to the reader.ejs

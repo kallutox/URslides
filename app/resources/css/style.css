@@ -214,7 +214,21 @@ footer div {
     border-radius: .5rem;
     border-top-left-radius: 0;
     padding: 1.7vh;
-    
+}
+
+.text-comment .toolbar {
+    width: inherit;
+    padding-right: 4vh;
+    position: absolute;
+    display: none;
+}
+
+.text-comment .toolbar button {
+    float: right;
+}
+
+.text-comment:hover .toolbar {
+    display: inline;
 }
 
 .audio-comment {
