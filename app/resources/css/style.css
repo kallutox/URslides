@@ -384,16 +384,23 @@ footer div {
 }
 
 .result-wrapper {
-    width: 15%;
+    width: 12%;
     margin: 2.5vh 0.8% 2.5vh 0.8%;
     float: left;
     border: 2px solid #999;
     background: #f1f1f1;
     border-radius: .25rem;
+    color: #ff2453;
 }
 
 .result-wrapper:hover {
     border-color: #ff2453;
+}
+
+.result-wrapper:hover .result-name{
+    border-color: #ff2453;
+    background: #ff2453;
+    color: white;
 }
 
 #results img {

@@ -97,7 +97,7 @@ function render(pdf, page, self) {
             isRendering = false;
             if (pageNumPending !== null) {
               // New page rendering is pending
-              render(pdf, pageNumPending, vh);
+              render(pdf, pageNumPending, self);
               pageNumPending = null;
             }
           });

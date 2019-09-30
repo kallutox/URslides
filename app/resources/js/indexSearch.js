@@ -1,8 +1,11 @@
 /* eslint-env browser */
-import PDFManager from "../js/pdf/PDFManager.js";
+import PDFManager from "../js/data/PDFManager.js";
+import Searcher from "../js/utility/Searcher.js";
+
+var searcher;
 
 function init() {
-    console.log("app started!");
+    searcher = new Searcher();
 }
 
 init();
