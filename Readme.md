@@ -42,7 +42,13 @@ URslides bietet den Benutzern die folgenden **Funktionen**:
 <br />
 
 - Eine Ansicht für die Betrachtung der Foliensätze und das Durchblättern durch diese
-- Das Ändern und Speichern des Dateinames in der Awendung
+- Das Ändern und Speichern des Dateinames in der Anwendung
+
+<p align="center">
+  <img alt="Screenshot des bearbeiteten PDF-Namen" src="docs/img/urslides-pdfName.png" width="300" align="middle"/>
+</p>
+<br />
+
 - Die Erstellung von Kommentaren zu einzelnen Seiten seiner eigenen Foliensätze im Anschluss an dessen Upload
   - Textkommentare
   - Audiokommentare: Upload oder direkte Aufnahme
