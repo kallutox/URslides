@@ -11,8 +11,8 @@ Die Anwendung [*URslides*](http://localhost:8701) ermöglicht Dozierenden der Un
 
 | | Infos | Implementierte Komponenten
 |-|-|-|
-<img alt="Portrait von Stefan Braun" src="docs/img/stefan-braun.jpg" width="100" /> | **Stefan Braun**<br />E-Mail: stefan.braun@student.ur.de<br />Github-Nutzer: INazca | Stefan Braun übernahm den Großteil der Programmierung und Getstaltung die Anwendung, und implementierte die Funktionen wie den Upload der Foliensätze, deren Anzeige, Suche sowie die Erstellug von Kommentaren in als Text oder Audio. |
-<img alt="Portrait von Isabella Kreller" src="docs/img/isabella-kreller.jpg" width="100" /> | **Isabella Kreller**<br />E-Mail: isabella.kreller@student.ur.de<br />Github-Nutzer: kallutox | Isabella Kreller war für die Änderung des Foliensatznamens zuständig. Sie hat an Teilen der Gestaltung mitgewirkt und Buttons für Funktionalitäten erstellt. Die Dokumentation der Projektarbeit ist auch ihre Aufgabe gewesen. |
+<img alt="Portrait von Stefan Braun" src="docs/img/stefan-braun.jpg" width="350"  /> | **Stefan Braun**<br />E-Mail: stefan.braun@student.ur.de<br />Github-Nutzer: INazca | Stefan Braun übernahm den Großteil der Programmierung und Getstaltung die Anwendung, und implementierte die Funktionen wie den Upload der Foliensätze, deren Anzeige, Suche sowie die Erstellug von Kommentaren in als Text oder Audio. |
+<img alt="Portrait von Isabella Kreller" src="docs/img/isabella-kreller.jpg" width="350" /> | **Isabella Kreller**<br />E-Mail: isabella.kreller@student.ur.de<br />Github-Nutzer: kallutox | Isabella Kreller war für die Änderung des Foliensatznamens zuständig. Sie hat an Teilen der Gestaltung mitgewirkt und Buttons für Funktionalitäten erstellt. Die Dokumentation der Projektarbeit ist auch ihre Aufgabe gewesen. |
 
 
 ## Setup
