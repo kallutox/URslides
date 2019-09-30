@@ -25,9 +25,12 @@ So nutzen Sie den vorgegebenen Server:
 
 [Beschreiben Sie alle Schritte, die notwendig sind um Ihre Anwendung auf Basis dieses Repositories zu starten.]
 
-## Beschreibung und Features
+## Beschreibung
 
-URslides bietet den Benutzern die folgenden **Funktionen**:
+*URslides* ist eine Anwendung, deren Zielgruppe primär Dozierende der Universität Regensburg sind. Diese können hier die Foleinsätze für ihre Vorlesungen vom ihrem Computer hochladen und für andere Nutzer, insbesondere Studierende, einsehbar machen. Sie haben dabei nach dem Upload die Option den Namen des Foliensatzes zu bearbeiten und Kommentare zu den einzelnen Folien der PDF-Datei zu erstellen. Die unterstützen Formate für Kommentare sind Text und Audiodateien. Audiodateien können hierbei erneut hochgeladen, oder alternativ auch direkt aus der Anwendung aufgenommen werden, bei Textkommentaren bietet sich die Möglichkeit diese nachträglich zu bearbeiten. Alle Arten von Kommentaren können zudem gelöscht werden.
+Ist der Benutzer zufrieden mit der kommentierten Version seines Foliensatzes, kann er dieses mit einem Klick veröffentlichen, sodass es für andere Nutzer einsehbar wird. Nach der Veröffentlichung ist keine weitere Bearbeitung mehr möglich.
+
+## Features
 <br />
 
 - Das Hochladen von Foliensätzen im pdf-Format und deren persistente Speicherung in einer Datenbank
@@ -73,4 +76,3 @@ URslides bietet den Benutzern die folgenden **Funktionen**:
   </p>
   <br />
 
-[Dokumentieren Sie ausführlich alle Funktionen der Anwendung. Verwenden Sie Screenshots und ggf. auch Gif-Dateien um zentrale Elemente und Abläufe zu beschreiben.]
