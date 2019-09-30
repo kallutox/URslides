@@ -1,6 +1,6 @@
 # URslides
 
-Die Anwendung [*URslides*](http://localhost:8701) ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text oder Audio können veröffentlicht und so den Studierenden zugänglich gemacht werden. 
+Die Anwendung *URslides* ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text oder Audio können veröffentlicht und so den Studierenden zugänglich gemacht werden. 
 
 <p align="center">
   <img alt="Screenshot der URslides Startseite" src="docs/img/urslides-startseite.PNG" width="600" align="middle"/>
