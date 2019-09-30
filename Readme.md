@@ -1,8 +1,11 @@
 # URslides
 
-Die Anwendung *URslides* ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text, Audio oder Video können veröffentlicht und so den Studierenden zugänglich gemacht werden. 
+Die Anwendung [*URslides*](http://localhost:8701) ermöglicht Dozierenden der Universität eine nachträgliche Verbesserung oder Ergänzung ihrer Foliensätze - Kommentare in der Form von Text oder Audio können veröffentlicht und so den Studierenden zugänglich gemacht werden. 
 
-(Screenshot + Link to be added)
+<p align="center">
+  <img alt="Screenshot der URslides Startseite" src="docs/img/urslides-startseite.PNG" width="600" align="middle"/>
+</p>
+
 
 ## Team
 
@@ -28,9 +31,16 @@ So nutzen Sie den vorgegebenen Server:
 
 [Screenshots + Formatierung folgen]
 
-URslides bietet den Benutzern die folgenden Funktionen:
+URslides bietet den Benutzern die folgenden **Funktionen**:
+<br />
 
 - Das Hochladen von Foliensätzen im pdf-Format und deren persistente Speicherung in einer Datenbank
+
+<p align="center">
+  <img alt="Screenshot des Uploads" src="docs/img/urslides-upload.PNG" width="400" align="middle"/>
+</p>
+<br />
+
 - Eine Ansicht für die Betrachtung der Foliensätze und das Durchblättern durch diese
 - Das Ändern und Speichern des Dateinames in der Awendung
 - Die Erstellung von Kommentaren zu einzelnen Seiten seiner eigenen Foliensätze im Anschluss an dessen Upload
