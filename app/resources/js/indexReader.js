@@ -291,7 +291,12 @@ function initSlides(pdfName, pdfPath, pdfComments, pdfIDCount) {
     currentSlides.addEventListener("commentsChanged", onCommentsChanged);
 
     console.log(currentSlides);
-    view.updateNameDisplay(pdfName);
+    //cut off pdf file ending
+    if(pdfName.substring(pdfName.length - 4, pdfName.length) === ".pdf") {
+        view.slidesNameContent = pdfName.substring(0, pdfName.length - 4);
+    } else {
+        view.slidesNameContent = pdfName;
+    }
 }
 
 function adjustUI(edit) {

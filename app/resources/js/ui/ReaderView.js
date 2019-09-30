@@ -29,9 +29,6 @@ class ReaderView extends Observable {
         this.audioExample = document.getElementsByClassName("audio-example")[0];
     }
 
-    updateNameDisplay(name) {
-        this.slidesName.innerText = name;
-    }
 
     updatePageDisplay(pageValues) {
         this.pageDisplay.innerText = pageValues.currentPage + "/" + pageValues.totalPages;
@@ -250,6 +247,10 @@ class ReaderView extends Observable {
         } else {
             this.slidesName.contentEditable = "false";
         }
+    }
+
+    set slidesNameContent(name) {
+        this.slidesName.innerText = name;
     }
 
     get readerDimensions(){
